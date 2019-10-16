@@ -36,10 +36,44 @@ done
 }
 
 Start_Docker(){
-echo -e "\e[1;41m Starting Docker Daemon\e[0m"
-sudo service docker start
-echo "\e [1;41m Docker Daemon Started\e[0m"
-}
+while true; do
+	echo -e "\e[1;41mChoose your distro wisely\e[0m"
+	options=("Ubuntu 16"
+		"Arch Linux"
+		"Return to previous Menu")
+	select opt in "${options[@]}"
+	do
+		case $opt in
+			"ubuntu 16")
+			echo -e "\e[1;41m Starting Docker Daemon\e[0m"
+			sleep 1
+			sudo service docker start
+			echo -e "\e[1;41m Docker Daemon Started\e[0m"
+			sleep 1
+			break 2
+			;;
+
+			"Arch Linux")
+			echo -e "\e[1;41m Starting Docker Daemon\e[0m"
+			sleep 1
+			sudo systemctl start docker 
+			echo -e "\e[1;41m Docker Daemon Started\e[0m"
+			sleep 1
+			break 2
+			;;
+
+			"Return to previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Invalid Option, Try again"
+			sleep 1.5
+			break
+			;;
+			esac
+	done
+done
+}			
 
 Create_Volume(){
 echo -e  "\033[1;41m Creating Docker Volume\033[0m"
