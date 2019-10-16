@@ -3,23 +3,49 @@
 # Developed by David Latorre (LatorreDev)
 
 Install_Requirements(){
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
-sudo apt update && sudo apt install -y docker  docker-engine git
+	echo -e "\e[1;41mChoose your distro wisely\e[0m"
+	options=("Ubuntu 16"
+		"Arch Linux"
+		"Return to previous Menu")
+	select opt in "${options[@]}"
+	do
+		case $opt in
+			"Ubuntu 16")
+			sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+			sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+			sudo apt update && sudo apt install -y docker docker-engine git
+			break
+			;;
+
+			"Arch Linux")
+			sudo pacman -S docker git
+			break
+			;;
+
+			"Return to previous Menu")
+			break
+			;;
+			*) echo -e "Invalid Option, Try again"
+			sleep 1.5
+			;;
+			esac
+		done
 }
 
 Start_Docker(){
-echo "Starting Docker Daemon"
+echo -e "\e[1;41m Starting Docker Daemon\e[0m"
 sudo service docker start
-echo "Docker Daemon Started"
+echo "\e [1;41m Docker Daemon Started\e[0m"
 }
 
 Create_Volume(){
-echo 'Creating docker volume'
-read -r -p 'Which name do you want for your volume? (No blank spaces allowed):' Volume_Name
+echo -e  "\033[1;41m Creating Docker Volume\033[0m"
+sleep 1
+read -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
 sudo docker volume create "$Volume_Name"
-echo 'volume created'
-sleep 3
+sleep 1
+echo -e "\033[1;41m $Volume_Name Volume Created \033[0m"
+sleep 1
 }
 
 List_Volumes(){
