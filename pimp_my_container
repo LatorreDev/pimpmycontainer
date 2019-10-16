@@ -16,20 +16,22 @@ echo "Docker Daemon Started"
 
 Create_Volume(){
 echo 'Creating docker volume'
-read -r -p 'Which name for the Volume?(No blank spaces allowed): ' VOLUME_NAME
-sudo docker volume create "$VOLUME_NAME"
+sudo docker volume create Ubuntu_Volume
 echo 'volume created'
 }
 
 List_Volumes(){
 echo 'Listing Volumes'
 sudo docker volume ls
-sleep 3
+sleep 5
 }
 
 Download_Container(){
+echo "check on dockerhub.com which image do you want to download"
+echo "Only pass username/image ie: latorredev/python3 don't pass the docker pull command"
+read -r -p "Image to pull?: " IMAGE_NAME  
 echo "Downloading container"
-sudo docker pull ubuntu
+sudo docker pull "$IMAGE_NAME"
 echo "Container downloaded"
 }
 
@@ -43,7 +45,7 @@ echo "Container running"
 List_Containers(){
 echo "active containers"
 sudo docker ps
-sleep 3
+sleep 5
 }
 
 Connect_Container(){
@@ -59,9 +61,9 @@ echo "Container stopped"
 }
 
 while true; do
-echo '***********************************'
-echo '* Pimp my container for Ubuntu 16 *'
-echo '***********************************'
+echo '*********************'
+echo '* Pimp my container *'
+echo '*********************'
 	options=(
 		"Install Requirements"
 		"Start Docker Service"
