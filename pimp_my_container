@@ -16,14 +16,15 @@ echo "Docker Daemon Started"
 
 Create_Volume(){
 echo 'Creating docker volume'
-sudo docker volume create Ubuntu_Volume
+read -r -p 'Which name for the Volume?(No blank spaces allowed): ' VOLUME_NAME
+sudo docker volume create "$VOLUME_NAME"
 echo 'volume created'
 }
 
 List_Volumes(){
 echo 'Listing Volumes'
 sudo docker volume ls
-sleep 5
+sleep 3
 }
 
 Download_Container(){
@@ -42,7 +43,7 @@ echo "Container running"
 List_Containers(){
 echo "active containers"
 sudo docker ps
-sleep 5
+sleep 3
 }
 
 Connect_Container(){
