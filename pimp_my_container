@@ -44,10 +44,38 @@ echo "Container downloaded"
 }
 
 Run_Container(){
-echo "starting container"
-sudo docker run -p 22:22 -d -it -v
-~/docker:/ ubuntu
-echo "Container running"
+while true; do
+echo -e "How do you want your container"
+options=("Container with custom ports"
+	"Default Container"
+	"Return to Previous Menu")
+	select opt in "${options[@]}"
+	do
+		case $opt in
+		"Container with custom ports")
+		#echo "starting container"
+		#sudo docker run -p 22:22 -d -it
+		#echo "Container running"
+		echo "Custom ports"
+		break
+		;;
+
+		"Default Container")
+		echo "Default ports"
+		break
+		;;
+
+		"Return to Previous Menu")
+		break 2
+		;;
+
+		*) echo -e "Invalid Option, Try again"
+		sleep 1.5
+		break
+		;;
+		esac
+	done
+done
 }
 
 List_Containers(){
