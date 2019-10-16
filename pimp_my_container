@@ -58,9 +58,9 @@ echo "Container stopped"
 }
 
 while true; do
-echo '*********************'
-echo '* Pimp my container *'
-echo '*********************'
+echo '***********************************'
+echo '* Pimp my container for Ubuntu 16 *'
+echo '***********************************'
 	options=(
 		"Install Requirements"
 		"Start Docker Service"
