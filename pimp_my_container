@@ -3,6 +3,7 @@
 # Developed by David Latorre (LatorreDev)
 
 Install_Requirements(){
+while true; do
 	echo -e "\e[1;41mChoose your distro wisely\e[0m"
 	options=("Ubuntu 16"
 		"Arch Linux"
@@ -14,22 +15,24 @@ Install_Requirements(){
 			sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 			sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
 			sudo apt update && sudo apt install -y docker docker-engine git
-			break
+			break 2
 			;;
 
 			"Arch Linux")
 			sudo pacman -S docker git
-			break
+			break 2
 			;;
 
 			"Return to previous Menu")
-			break
+			break 2
 			;;
 			*) echo -e "Invalid Option, Try again"
 			sleep 1.5
+			break
 			;;
 			esac
 		done
+done
 }
 
 Start_Docker(){
@@ -126,9 +129,9 @@ echo "Container stopped"
 }
 
 while true; do
-echo -e "\e[1;32m***********************************\e[0m"
-echo -e "\e[1;32m* Pimp my container for Ubuntu 16 *\e[0m"
-echo -e "\e[1;32m***********************************\e[0m"
+echo -e "\e[1;32m**********************\e[0m"
+echo -e "\033[5;32m* Pimp my container  *\033[0m"
+echo -e "\e[1;32m**********************\e[0m"
 	options=(
 		"Install Requirements"
 		"Start Docker Service"
