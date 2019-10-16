@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+# Pimp my container
+# Developed by David Latorre (LatorreDev)
+
+Install_Requirements(){
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+sudo apt update && sudo apt install -y docker  docker-engine git
+}
+
+Start_Docker(){
+echo "Starting Docker Daemon"
+sudo service docker start
+echo "Docker Daemon Started"
+}
+
+Create_Volume(){
+echo 'Creating docker volume'
+sudo docker volume create Ubuntu_Volume
+echo 'volume created'
+}
+
+List_Volumes(){
+echo 'Listing Volumes'
+sudo docker volume ls
+sleep 5
+}
+
+Download_Container(){
+echo "Downloading container"
+sudo docker pull ubuntu
+echo "Container downloaded"
+}
+
+Run_Container(){
+echo "starting container"
+sudo docker run -p 22:22 -d -it -v
+~/docker:/ ubuntu
+echo "Container running"
+}
+
+List_Containers(){
+echo "active containers"
+sudo docker ps
+sleep 5
+}
+
+Connect_Container(){
+echo "connecting to container"
+sudo docker exec -it $(docker ps | tail -1 | rev | cut -d " " -f 1 | rev) /bin/bash
+echo "detached from container"
+}
+
+Stop_Container(){
+echo "Stopping container"
+sudo docker stop $(docker ps | tail -1 | rev | cut -d " " -f 1 | rev)
+echo "Container stopped"
+}
+
+while true; do
+echo '*********************'
+echo '* Pimp my container *'
+echo '*********************'
+	options=(
+		"Install Requirements"
+		"Start Docker Service"
+		"Create volume"
+		"List Volumes"
+	        "Download container"
+	        "Run container"
+	        "List containers"
+	        "Connect to the container"
+	        "Stop container"
+	        "Exit")
+		select opt in "${options[@]}"
+		do                                                                              
+			case $opt in
+			"Install Requirements")
+			Install_Requirements
+			break
+			;;
+
+			"Start Docker Service")
+			Start_Docker
+			break
+			;;
+
+			"Create volume")
+			Create_Volume
+			break
+			;;
+
+			"List Volumes")
+			List_Volumes
+			break
+			;;
+
+			"Download container")
+			Download_Container
+			break
+			;;
+
+			"Run container")
+			Run_Container
+			break
+			;;
+
+			"List containers")
+			List_Containers
+			break
+			;;
+
+			"Connect to the container")
+			Connect_Container
+			break
+			;;
+
+			"Stop container")
+			Stop_Container
+			break
+			;;
+
+			"Exit")
+    			break 2
+    			;;
+
+			*) echo invalid option;;
+    		esac
+	done
+done
