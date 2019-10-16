@@ -94,7 +94,7 @@ sleep 3
 Manage_Volumes(){
 			while true;do
 			echo -e "\e[1;32m**********************\e[0m"
-			echo -e "\033[5;32m* Manage Volumes  *\033[0m"
+			echo -e "\033[5;32m*   Manage Volumes   *\033[0m"
 			echo -e "\e[1;32m**********************\e[0m"
 			options=("Create volume"
 				"List Volumes"
@@ -158,7 +158,7 @@ options=("Container with custom ports"
 
 		"Default Container")
 		read -r -p "Which name for your container?: " CONTAINER_NAME
-		read -r -p "Which container Image?: )" CONTAINER_IMAGE_NAME
+		read -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
 		sudo docker run -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
 		echo "Running default container"
 		break
