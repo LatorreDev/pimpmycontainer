@@ -95,7 +95,7 @@ echo "detached from container"
 
 Stop_Container(){
 echo "Stopping container"
-sudo docker stop $(docker ps | tail -1 | rev | cut -d " " -f 1 | rev)
+sudo docker stop "$(docker ps | tail -1 | rev | cut -d " " -f 1 | rev)"
 echo "Container stopped"
 }
 
