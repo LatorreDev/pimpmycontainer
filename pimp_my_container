@@ -61,7 +61,10 @@ options=("Container with custom ports"
 		;;
 
 		"Default Container")
-		echo "Default ports"
+		read -r -p "Which name for your container?: " CONTAINER_NAME
+		read -r -p "Which container Image?: )" CONTAINER_IMAGE_NAME
+		sudo docker run -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
+		echo "Running default container"
 		break
 		;;
 
@@ -85,8 +88,8 @@ sleep 3
 }
 
 Connect_Container(){
-echo "connecting to container"
-sudo docker exec -it $(docker ps | tail -1 | rev | cut -d " " -f 1 | rev) /bin/bash
+read -r -p "connecting to container, please, give me the name of the container: " CONTAINER_NAME
+sudo docker exec -it  "$CONTAINER_NAME" /bin/bash
 echo "detached from container"
 }
 
