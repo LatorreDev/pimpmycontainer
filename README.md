@@ -1,4 +1,4 @@
-[alt text](https://github.com/LatorreDev/pimpmycontainer/blob/master/assets/pimplogo.png "pimp my container logo")
+![Alt Text](https://github.com/LatorreDev/pimpmycontainer/blob/master/assets/pimplogo.png)
 
 Utility for create custom docker containers under demand
 
