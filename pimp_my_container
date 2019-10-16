@@ -91,6 +91,39 @@ sudo docker volume ls
 sleep 3
 }
 
+Manage_Volumes(){
+			while true;do
+			echo -e "\e[1;32m**********************\e[0m"
+			echo -e "\033[5;32m* Manage Volumes  *\033[0m"
+			echo -e "\e[1;32m**********************\e[0m"
+			options=("Create volume"
+				"List Volumes"
+				"Return to Previous Menu")
+
+				select opt in "${options[@]}"
+				do                                                                              
+				case $opt in
+
+				"Create volume")
+				Create_Volume
+				break
+				;;
+
+				"List Volumes")
+				List_Volumes
+				break
+				;;
+
+				"Return to Previous Menu")
+				break 2
+				;;
+
+				*) echo invalid option;;
+    				esac
+				done
+			done
+}
+
 List_Images_Installed(){
 echo 'Listing Installed Docker Images'
 docker image ls
@@ -169,8 +202,7 @@ echo -e "\e[1;32m**********************\e[0m"
 	options=(
 		"Install Requirements"
 		"Start Docker Service"
-		"Create volume"
-		"List Volumes"
+		"Manage Volumes"
 		"List Images Installed"
 	        "Download container"
 	        "Run container"
@@ -191,13 +223,8 @@ echo -e "\e[1;32m**********************\e[0m"
 			break
 			;;
 
-			"Create volume")
-			Create_Volume
-			break
-			;;
-
-			"List Volumes")
-			List_Volumes
+			"Manage Volumes")
+			Manage_Volumes
 			break
 			;;
 
