@@ -28,6 +28,12 @@ sudo docker volume ls
 sleep 3
 }
 
+List_Images_Installed(){
+echo 'Listing Installed Docker Images'
+docker image ls
+sleep 3
+}
+
 Download_Container(){
 echo "check on dockerhub.com which image do you want to download"
 echo "Only pass username/image ie: latorredev/python3 don't pass the docker pull command"
@@ -63,14 +69,15 @@ echo "Container stopped"
 }
 
 while true; do
-echo '*********************'
-echo '* Pimp my container *'
-echo '*********************'
+echo -e "\e[1;32m***********************************\e[0m"
+echo -e "\e[1;32m* Pimp my container for Ubuntu 16 *\e[0m"
+echo -e "\e[1;32m***********************************\e[0m"
 	options=(
 		"Install Requirements"
 		"Start Docker Service"
 		"Create volume"
 		"List Volumes"
+		"List Images Installed"
 	        "Download container"
 	        "Run container"
 	        "List containers"
@@ -97,6 +104,11 @@ echo '*********************'
 
 			"List Volumes")
 			List_Volumes
+			break
+			;;
+
+			"List Images Installed")
+			List_Images_Installed
 			break
 			;;
 
