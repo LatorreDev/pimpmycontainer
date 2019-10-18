@@ -73,23 +73,11 @@ while true; do
 			esac
 	done
 done
-}			
+}		
 
-Create_Volume(){
-echo -e  "\033[1;41m Creating Docker Volume\033[0m"
-sleep 1
-read -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
-sudo docker volume create "$Volume_Name"
-sleep 1
-echo -e "\033[1;41m $Volume_Name Volume Created \033[0m"
-sleep 1
-}
+# "Pimp my container"
 
-List_Volumes(){
-echo 'Listing Volumes'
-sudo docker volume ls
-sleep 3
-}
+# Manage Volumes
 
 Manage_Volumes(){
 			while true;do
@@ -118,11 +106,75 @@ Manage_Volumes(){
 				break 2
 				;;
 
-				*) echo invalid option;;
+				*) echo -e "Opps, wrong option, try again :)";;
     				esac
 				done
 			done
 }
+
+
+Create_Volume(){
+echo -e  "\033[1;41m Creating Docker Volume\033[0m"
+sleep 1
+read -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
+sudo docker volume create "$Volume_Name"
+sleep 1
+echo -e "\033[1;41m $Volume_Name Volume Created \033[0m"
+sleep 1
+}
+
+List_Volumes(){
+echo 'Listing Volumes'
+sudo docker volume ls
+sleep 3
+}
+
+
+# Pimp my container
+
+# "Manage Images"
+
+Manage_Images(){
+while true;do
+	echo -e "\e[1;32m**********************\e[0m"
+	echo -e "\033[5;32m*   Manage Images   *\033[0m"
+	echo -e "\e[1;32m**********************\e[0m"
+	options=("List Images Installed"
+		"Download Image"
+		"Delete Image"
+		"Return to Previous Menu")
+
+		select opt in "${options[@]}"
+		do                                                                              
+			case $opt in
+
+			"List Images Installed")
+			List_Images_Installed
+			break
+			;;
+
+			"Download Image")
+			Download_Image
+			break
+			;;
+
+			"Delete Image")
+			Delete_Image
+			break
+			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)";;
+
+			esac
+		done
+done
+
+}
+
 
 List_Images_Installed(){
 echo 'Listing Installed Docker Images'
@@ -130,7 +182,7 @@ docker image ls
 sleep 3
 }
 
-Download_Container(){
+Download_Image(){
 echo "check on dockerhub.com which image do you want to download"
 echo "Only pass username/image ie: latorredev/python3 don't pass the docker pull command"
 read -r -p "Image to pull?: " IMAGE_NAME  
@@ -138,6 +190,15 @@ echo "Downloading container"
 sudo docker pull "$IMAGE_NAME"
 echo "Container downloaded"
 }
+
+Delete_Image(){
+echo -e "Deleting image"
+read -r -p "Please give me the full name of the image to delete ie: latorredev/python3: " IMAGE_TO_DELETE_NAME
+sudo docker rmi "$IMAGE_TO_DELETE_NAME"
+echo -e "Image Deleted"
+}
+
+# "Manage Containers"
 
 Run_Container(){
 while true; do
@@ -202,13 +263,16 @@ echo -e "\e[1;32m**********************\e[0m"
 	options=(
 		"Install Requirements"
 		"Start Docker Service"
+		"Pimp my container"
 		"Manage Volumes"
-		"List Images Installed"
-	        "Download container"
-	        "Run container"
-	        "List containers"
-	        "Connect to the container"
-	        "Stop container"
+		"Manage Images"
+		"Manage Containers"
+		#"List Images Installed"
+	        #"Download container"
+	        #"Run container"
+	        #"List containers"
+	        #"Connect to the container"
+	        #"Stop container"
 	        "Exit")
 		select opt in "${options[@]}"
 		do                                                                              
@@ -225,6 +289,11 @@ echo -e "\e[1;32m**********************\e[0m"
 
 			"Manage Volumes")
 			Manage_Volumes
+			break
+			;;
+
+			"Manage Images")
+			Manage_Images
 			break
 			;;
 
