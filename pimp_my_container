@@ -408,6 +408,11 @@ echo -e "\e[1;32m**********************\e[0m"
 			break
 			;;
 
+			"Manage Volumes")
+			Manage_Volumes
+			break
+			;;
+
 			"Manage Images")
 			Manage_Images
 			break
