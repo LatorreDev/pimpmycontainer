@@ -86,6 +86,7 @@ Manage_Volumes(){
 			echo -e "\e[1;32m**********************\e[0m"
 			options=("Create volume"
 				"List Volumes"
+				"Delete Volume"
 				"Return to Previous Menu")
 
 				select opt in "${options[@]}"
@@ -99,6 +100,11 @@ Manage_Volumes(){
 
 				"List Volumes")
 				List_Volumes
+				break
+				;;
+
+				"Delete Volume")
+				Delete_Volume
 				break
 				;;
 
@@ -126,6 +132,15 @@ List_Volumes(){
 echo 'Listing Volumes'
 sudo docker volume ls
 sleep 3
+}
+
+Delete_Volume(){
+echo -e "Deleting a custom volume"
+sleep 1.5
+read -r -p "Please give me name of the colume to delete: " VOLUME_DELETE_NAME
+sudo docker volume rm "$VOLUME_DELETE_NAME"
+echo -e "Custom Volume Deleted"
+sleep 1.5
 }
 
 # Pimp my container
@@ -200,7 +215,7 @@ echo -e "Image Deleted"
 Manage_Containers(){
 while true;do
 	echo -e "\e[1;32m**********************\e[0m"
-	echo -e "\033[5;32m*   Manage Containers *\033[0m"
+	echo -e "\033[5;32m*  Manage Containers *\033[0m"
 	echo -e "\e[1;32m**********************\e[0m"
 	options=("List Running Containers"
 		"List All Containers"
