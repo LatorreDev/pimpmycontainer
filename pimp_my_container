@@ -314,10 +314,15 @@ options=("Container with custom ports"
 	do
 		case $opt in
 		"Container with custom ports")
-		#echo "starting container"
-		#sudo docker run -p 22:22 -d -it
-		#echo "Container running"
-		echo "Custom ports"
+		read -r -p "Which name for your container?: " CONTAINER_NAME
+		read -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
+		read -r -p "Which are the host port?: " HOST_PORT
+		read -r -p "Which are the target port?: " TARGET_PORT
+		echo -e "starting container"
+		sudo docker run -p "$HOST_PORT":"$TARGET_PORT" -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
+		echo -e "Container running with custom ports"
+		sudo docker ps
+		sleep 1.5
 		break
 		;;
 
