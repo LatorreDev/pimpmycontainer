@@ -77,6 +77,81 @@ done
 
 # "Pimp my container"
 
+Pimp_My_Container(){
+
+	while true;do
+		echo -e "\e[1;32m**********************\e[0m"
+		echo -e "\033[5;32m*   Pimp my Container   *\033[0m"
+		echo -e "\e[1;32m**********************\e[0m"
+		echo -e ""
+		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+		options=("Python Tools"
+			"Ruby Tools"
+			"DevOps Tools"
+			"Low Level Tools"
+			"Common Tools ie: text editors"
+			"Let's pimp my image"
+			"Upload my pimped image to docker hub"
+			"Destroy my pimped image"
+			"Return to Previous Menu")
+	
+			select opt in "${options[@]}"
+			do
+			case $opt in
+
+			"Python Tools")
+			echo -e "Test Python Tools"
+			break
+			;;
+
+			"Ruby Tools")
+			echo -e "Test Ruby tools"
+			break
+			;;
+
+			"DevOps Tools")
+			echo -e "Test DevOps tools"
+			break
+			;;
+
+			"Low Level Tools")
+			echo -e "Test Low Level Tools"
+			break
+			;;
+
+			"Common Tools ie: text editors")
+			echo -e "Test Common Tools"
+			break
+			;;
+
+			"Let's pimp my image")
+			echo -e "Test Pimp Image"
+			break
+			;;
+
+			"Upload my pimped image to docker hub")
+			echo -e "Test upload"
+			break
+			;;
+
+			"Destroy my pimped image")
+			echo -e "Test destroy pimped image"
+			break
+			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+    			esac
+
+			done
+done
+
+}
+
 # Manage Volumes
 
 Manage_Volumes(){
@@ -142,12 +217,6 @@ read -r -p "Please give me name of the colume to delete: " VOLUME_DELETE_NAME
 sudo docker volume rm "$VOLUME_DELETE_NAME"
 echo -e "Custom Volume Deleted"
 sleep 1.5
-}
-
-# Pimp my container
-
-Pimp_My_Container(){
-echo -e "Test pimp my container"
 }
 
 # "Manage Images"
@@ -357,7 +426,7 @@ echo "Container stopped"
 Stop_All_Containers(){
 echo -e "Stopping all unused containers"
 sleep 1.5
-sudo docker stop $(docker ps -aq)
+sudo docker stop "$(docker ps -aq)"
 echo -e "All unused containers stopped"
 sleep 1.5
 }
@@ -365,7 +434,7 @@ sleep 1.5
 Delete_Exited(){
 echo -e "Deleting all exited containers"
 sleep 1.5
-sudo docker rm $(docker ps -aqf status=exited)
+sudo docker rm "$(docker ps -aqf status=exited)"
 echo -e "All exited containers deleted"
 }
 
