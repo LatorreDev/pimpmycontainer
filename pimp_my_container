@@ -112,7 +112,8 @@ Manage_Volumes(){
 				break 2
 				;;
 
-				*) echo -e "Opps, wrong option, try again :)";;
+				*) echo -e "Opps, wrong option, try again :)"
+				;;
     				esac
 				done
 			done
@@ -144,6 +145,10 @@ sleep 1.5
 }
 
 # Pimp my container
+
+Pimp_My_Container(){
+echo -e "Test pimp my container"
+}
 
 # "Manage Images"
 
@@ -328,10 +333,11 @@ options=("Container with custom ports"
 		break 2
 		;;
 
-		*) echo -e "Invalid Option, Try again"
+		*) echo -e "Opps, wrong option, try again :)"
 		sleep 1.5
 		break
 		;;
+
 		esac
 	done
 done
@@ -384,10 +390,6 @@ echo -e "\e[1;32m**********************\e[0m"
 		"Manage Volumes"
 		"Manage Images"
 		"Manage Containers"
-	        #"Run container"
-	        #"List containers"
-	        #"Connect to the container"
-	        #"Stop container"
 	        "Exit")
 		select opt in "${options[@]}"
 		do                                                                              
@@ -399,6 +401,11 @@ echo -e "\e[1;32m**********************\e[0m"
 
 			"Start Docker Service")
 			Start_Docker
+			break
+			;;
+
+			"Pimp my container")
+			Pimp_My_Container
 			break
 			;;
 
@@ -418,10 +425,16 @@ echo -e "\e[1;32m**********************\e[0m"
 			;;
 
 			"Exit")
+			echo -e "Time to say goodbye"
+			sleep 2
     			break 2
     			;;
+			
+			*) echo -e "Opps, wrong option, try again :)"
+			sleep 1.5
+			break
+			;;
 
-			*) echo invalid option;;
     		esac
 	done
 done
