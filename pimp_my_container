@@ -77,23 +77,32 @@ done
 
 # "Pimp my container"
 
-Pimp_Choose_Distro(){
+Pimp_Choose_Distro_Base(){
 
 	while true; do
-	echo -e "\e[1;41mChoose your distro wisely\e[0m"
-	options=("Ubuntu 16"
-		"Arch Linux"
+	echo -e "\e[1;41mChoose your distro that will be the base of your image\e[0m"
+	options=("Ubuntu 16.04"
+		"Ubuntu 18.04"
+		"Arch"
 		"Return to Previous Menu")
 	select opt in "${options[@]}"
 	do
 		case $opt in
 
-		"Ubuntu 16")
-		echo -e "Test Ubuntu 16"
+		"Ubuntu 16.04")
+		echo -e "FROM ubuntu/xenial" > Dockerfile
+		Pimp_My_Container_Ubuntu
 		break
 		;;
 
-		"Arch Linux")
+		"Ubuntu 18.04")
+		echo -e "FROM ubuntu/bionic" > Dockerfile
+		Pimp_My_Container_Ubuntu
+		break
+		;;
+
+		"Arch")
+		echo -e "FROM archlinux/base" > Dockerfile
 		Pimp_My_Container_Arch
 		break
 		;;
@@ -114,10 +123,6 @@ Pimp_Choose_Distro(){
 	done
 done
 
-		
-		
-
-
 }
 
 Pimp_My_Container_Arch(){
@@ -135,7 +140,7 @@ Pimp_My_Container_Arch(){
 			"Common Tools ie: text editors"
 			"Let's pimp my image"
 			"Upload my pimped image to docker hub"
-			"Destroy my pimped image"
+			"Delete my pimped image"
 			"Return to Previous Menu")
 	
 			select opt in "${options[@]}"
@@ -143,42 +148,52 @@ Pimp_My_Container_Arch(){
 			case $opt in
 
 			"Python Tools")
-			echo -e "Test Python Tools"
+			Python_Arch
 			break
 			;;
 
 			"Ruby Tools")
-			echo -e "Test Ruby tools"
+			Ruby_Arch
 			break
 			;;
 
 			"DevOps Tools")
-			echo -e "Test DevOps tools"
+			DevOps_Arch
 			break
 			;;
 
 			"Low Level Tools")
-			echo -e "Test Low Level Tools"
+			Low_Level_Arch
+			break
+			;;
+
+			"Javascript Tools")
+			Javascript_Tools
+			break
+			;;
+
+			"Databases Tools")
+			Databases_Tools
 			break
 			;;
 
 			"Common Tools ie: text editors")
-			echo -e "Test Common Tools"
+			Common_Tools_Arch
 			break
 			;;
 
 			"Let's pimp my image")
-			echo -e "Test Pimp Image"
+			Pimp_My_Image
 			break
 			;;
 
 			"Upload my pimped image to docker hub")
-			echo -e "Test upload"
+			Upload_Image
 			break
 			;;
 
-			"Destroy my pimped image")
-			echo -e "Test destroy pimped image"
+			"Delete my pimped image")
+			Delete_Image
 			break
 			;;
 
@@ -192,7 +207,131 @@ Pimp_My_Container_Arch(){
 
 			done
 done
+}
 
+Return_Message(){
+echo -e "If you want to add some tool more, return to previous menus and hit the option, when you finish, retrun to main menu"
+echo -e "of pimp my container and choose the let's pimp my image option to build your custom image"
+}
+
+Python_Arch(){
+	while true;do
+		echo -e "\e[1;32m*******************\e[0m"
+		echo -e "\033[5;32m*  Python tools  *\033[0m"
+		echo -e "\e[1;32m*******************\e[0m"
+		echo -e ""
+		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+		options=("Python 3"
+			"Pip 3"
+			"Flask"
+			"Django"
+			"Return to Previous Menu")
+	
+			select opt in "${options[@]}"
+			do
+			case $opt in
+			
+			"Python 3")
+			echo -e "RUN pacman -Sy && pacman -S python --noconfirm" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Pip 3")
+			echo "RUN pacman -Sy && pacman -S python-pip --noconfirm" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Flask")
+			echo "RUN pacman -Sy && pacman -S python python-pip --noconfirm" >> Dockerfile
+			echo "RUN pip install Flask" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Django")
+			echo "Run pacman -Sy && pacman -S python python-pip --noconfirm" >> Dockerfile
+			echo "Run pip install Django" >> Dockerfile
+			break
+			;;
+			
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+    			esac
+
+			done
+	done
+
+}
+
+Ruby_Arch(){
+	while true;do
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e "\033[5;32m*  Ruby tools  *\033[0m"
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Ruby"
+		"Rails"
+		"Sinatra"
+		"Jets"
+		"Return to Previous Menu")
+	
+		select opt in "${options[@]}"
+		do
+		case $opt in
+
+		"Ruby")
+		echo -e "RUN pacman -Sy && pacman -S ruby --noconfirm" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Rails")
+		echo -e "RUN pacman -Sy && pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "RUN gem install rails" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Sinatra")
+		echo -e "RUN pacman -Sy && pacman -S ruby --noconfirm" >> Dockerfile
+		echo -e "RUN gem install sinatra" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Jets")
+		echo -e "RUN pacman -Sy && pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "RUN gem install jets" >> Dockerfile
+		break
+		;;
+		
+		"Return to Previous Menu")
+		break 2
+		;;
+
+		*) echo -e "Opps, wrong option, try again :)"
+		;;
+    		esac
+
+		done
+	done
+
+
+
+	
+}
+
+Pimp_My_Image(){
+read -r -p "Which name do you want your pimped image?: " PIMPED_IMAGE_NAME
+sudo docker build -t "$PIMPED_IMAGE_NAME" .
+echo -e "Custom Image Pimped"
 }
 
 # Manage Volumes
@@ -522,7 +661,7 @@ echo -e "\e[1;32m**********************\e[0m"
 			;;
 
 			"Pimp my container")
-			Pimp_Choose_Distro
+			Pimp_Choose_Distro_Base
 			break
 			;;
 
