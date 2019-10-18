@@ -112,7 +112,8 @@ Manage_Volumes(){
 				break 2
 				;;
 
-				*) echo -e "Opps, wrong option, try again :)";;
+				*) echo -e "Opps, wrong option, try again :)"
+				;;
     				esac
 				done
 			done
