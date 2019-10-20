@@ -137,11 +137,13 @@ Pimp_My_Container_Arch(){
 			"Ruby Tools"
 			"DevOps Tools"
 			"Low Level Tools"
+			"Javascript Tools"
+			"Databases Tools"
 			"Common Tools ie: text editors"
 			"Let's pimp my image"
 			"Upload my pimped image to docker hub"
 			"Delete my pimped image"
-			"Return to Previous Menu")
+			"Return to Main Menu")
 	
 			select opt in "${options[@]}"
 			do
@@ -197,8 +199,8 @@ Pimp_My_Container_Arch(){
 			break
 			;;
 
-			"Return to Previous Menu")
-			break 2
+			"Return to Main Menu")
+			break 3
 			;;
 
 			*) echo -e "Opps, wrong option, try again :)"
@@ -207,11 +209,13 @@ Pimp_My_Container_Arch(){
 
 			done
 done
+
 }
 
 Return_Message(){
-echo -e "If you want to add some tool more, return to previous menus and hit the option, when you finish, retrun to main menu"
-echo -e "of pimp my container and choose the let's pimp my image option to build your custom image"
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
 }
 
 Python_Arch(){
@@ -329,7 +333,7 @@ Ruby_Arch(){
 }
 
 Pimp_My_Image(){
-read -r -p "Which name do you want your pimped image?: " PIMPED_IMAGE_NAME
+read -e -r -p "Which name do you want your pimped image?: " PIMPED_IMAGE_NAME
 sudo docker build -t "$PIMPED_IMAGE_NAME" .
 echo -e "Custom Image Pimped"
 }
@@ -379,7 +383,7 @@ Manage_Volumes(){
 Create_Volume(){
 echo -e  "\033[1;41m Creating Docker Volume\033[0m"
 sleep 1
-read -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
+read -e -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
 sudo docker volume create "$Volume_Name"
 sleep 1
 echo -e "\033[1;41m $Volume_Name Volume Created \033[0m"
@@ -395,7 +399,7 @@ sleep 3
 Delete_Volume(){
 echo -e "Deleting a custom volume"
 sleep 1.5
-read -r -p "Please give me name of the colume to delete: " VOLUME_DELETE_NAME
+read -e -r -p "Please give me name of the volume to delete: " VOLUME_DELETE_NAME
 sudo docker volume rm "$VOLUME_DELETE_NAME"
 echo -e "Custom Volume Deleted"
 sleep 1.5
@@ -453,7 +457,7 @@ sleep 3
 Download_Image(){
 echo "check on dockerhub.com which image do you want to download"
 echo "Only pass username/image ie: latorredev/python3 don't pass the docker pull command"
-read -r -p "Image to pull?: " IMAGE_NAME  
+read -e -r -p "Image to pull?: " IMAGE_NAME  
 echo "Downloading container"
 sudo docker pull "$IMAGE_NAME"
 echo "Container downloaded"
@@ -461,7 +465,7 @@ echo "Container downloaded"
 
 Delete_Image(){
 echo -e "Deleting image"
-read -r -p "Please give me the full name of the image to delete ie: latorredev/python3: " IMAGE_TO_DELETE_NAME
+read -e -r -p "Please give me the full name of the image to delete ie: latorredev/python3: " IMAGE_TO_DELETE_NAME
 sudo docker rmi "$IMAGE_TO_DELETE_NAME"
 echo -e "Image Deleted"
 }
@@ -565,10 +569,10 @@ options=("Container with custom ports"
 	do
 		case $opt in
 		"Container with custom ports")
-		read -r -p "Which name for your container?: " CONTAINER_NAME
-		read -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
-		read -r -p "Which are the host port?: " HOST_PORT
-		read -r -p "Which are the target port?: " TARGET_PORT
+		read -e -r -p "Which name for your container?: " CONTAINER_NAME
+		read -e -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
+		read -e -r -p "Which are the host port?: " HOST_PORT
+		read -e -r -p "Which are the target port?: " TARGET_PORT
 		echo -e "starting container"
 		sudo docker run -p "$HOST_PORT":"$TARGET_PORT" -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
 		echo -e "Container running with custom ports"
@@ -578,8 +582,8 @@ options=("Container with custom ports"
 		;;
 
 		"Default Container")
-		read -r -p "Which name for your container?: " CONTAINER_NAME
-		read -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
+		read -e -r -p "Which name for your container?: " CONTAINER_NAME
+		read -e -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
 		sudo docker run -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
 		echo "Running default container"
 		break
@@ -600,7 +604,7 @@ done
 }
 
 Stop_Container(){
-read -r -p "Give me the name of the container to stop: " STOP_NAME
+read -e -r -p "Give me the name of the container to stop: " STOP_NAME
 sudo docker stop "$STOP_NAME"
 echo "Container stopped"
 }
@@ -621,14 +625,14 @@ echo -e "All exited containers deleted"
 }
 
 Delete_Custom_Container(){
-read -r -p "Give me tehe name of the container to delete: " DELETE_CUSTOM
+read -e -r -p "Give me the name of the container to delete: " DELETE_CUSTOM
 sudo docker rm "$DELETE_CUSTOM"
 echo -e "Container Deleted"
 sleep 1.5
 }
 
 Connect_Container(){
-read -r -p "connecting to container, please, give me the name of the container: " CONTAINER_NAME
+read -e -r -p "connecting to container, please, give me the name of the container: " CONTAINER_NAME
 sudo docker exec -it  "$CONTAINER_NAME" /bin/bash
 echo "detached from container"
 }
@@ -682,7 +686,7 @@ echo -e "\e[1;32m**********************\e[0m"
 
 			"Exit")
 			echo -e "Time to say goodbye"
-			sleep 2
+			sleep 1
     			break 2
     			;;
 			
