@@ -268,6 +268,7 @@ Python_Arch(){
 			"Fabric")
 			Arch_PyPip
 			echo "RUN pip install fabric" >> Dockerfile
+			Return_Message
 			break
 			;;
 			
@@ -337,10 +338,31 @@ Ruby_Arch(){
 
 		done
 	done
-
-
-
 	
+}
+
+DevOps_Arch(){
+	while true;do
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e "\033[5;32m*  DevOps tools  *\033[0m"
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Apache"
+		"Nginx"
+		"Puppet"
+		"HaProxy"
+		"UFW firewall"
+		"Curl"
+		"Dig")
+
+		select opt in "${options[@]}"
+		do
+			case $opt in
+			esac
+		done
+	done
+
 }
 
 Pimp_My_Image(){
