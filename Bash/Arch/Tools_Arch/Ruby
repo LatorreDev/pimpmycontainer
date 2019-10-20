@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# Ruby Tools for Arch Docker Image
+
+Ruby_Arch(){
+
+	while true;do
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e "\033[5;32m*  Ruby tools  *\033[0m"
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Ruby"
+		"Rails"
+		"Sinatra"
+		"Jets"
+		"Return to Previous Menu")
+	
+		select opt in "${options[@]}"
+		do
+		case $opt in
+
+		"Ruby")
+		echo -e "RUN pacman -Sy && pacman -S ruby --noconfirm" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Rails")
+		echo -e "RUN pacman -Sy && pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "RUN gem install rails" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Sinatra")
+		echo -e "RUN pacman -Sy && pacman -S ruby --noconfirm" >> Dockerfile
+		echo -e "RUN gem install sinatra" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Jets")
+		echo -e "RUN pacman -Sy && pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "RUN gem install jets" >> Dockerfile
+		Return_Message
+		break
+		;;
+		
+		"Return to Previous Menu")
+		break 2
+		;;
+
+		*) echo -e "Opps, wrong option, try again :)"
+		;;
+    		esac
+
+		done
+	done
+	
+}
+
+Return_Message(){
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
+"$@"
