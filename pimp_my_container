@@ -77,70 +77,130 @@ done
 
 # "Pimp my container"
 
-Pimp_My_Container(){
+Pimp_Choose_Distro_Base(){
+
+	while true; do
+	echo -e "\e[1;41mChoose your distro that will be the base of your image\e[0m"
+	options=("Ubuntu 16.04"
+		"Ubuntu 18.04"
+		"Arch"
+		"Return to Previous Menu")
+	select opt in "${options[@]}"
+	do
+		case $opt in
+
+		"Ubuntu 16.04")
+		echo -e "FROM ubuntu/xenial" > Dockerfile
+		Pimp_My_Container_Ubuntu
+		break
+		;;
+
+		"Ubuntu 18.04")
+		echo -e "FROM ubuntu/bionic" > Dockerfile
+		Pimp_My_Container_Ubuntu
+		break
+		;;
+
+		"Arch")
+		echo -e "FROM archlinux/base" > Dockerfile
+		Pimp_My_Container_Arch
+		break
+		;;
+
+		"Return to Previous Menu")
+		break 2
+		;;
+
+		"42")
+		echo -e "The answer to life"
+		break
+		;;
+
+		*) echo -e "Opps, wrong option, try again :)"
+		;;
+		esac
+
+	done
+done
+
+}
+
+Pimp_My_Container_Arch(){
 
 	while true;do
-		echo -e "\e[1;32m**********************\e[0m"
-		echo -e "\033[5;32m*   Pimp my Container   *\033[0m"
-		echo -e "\e[1;32m**********************\e[0m"
+		echo -e "\e[1;32m********************************\e[0m"
+		echo -e "\033[5;32m*  Pimp my Container for Arch  *\033[0m"
+		echo -e "\e[1;32m********************************\e[0m"
 		echo -e ""
 		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
 		options=("Python Tools"
 			"Ruby Tools"
 			"DevOps Tools"
 			"Low Level Tools"
+			"Javascript Tools"
+			"Databases Tools"
 			"Common Tools ie: text editors"
 			"Let's pimp my image"
 			"Upload my pimped image to docker hub"
-			"Destroy my pimped image"
-			"Return to Previous Menu")
+			"Delete my pimped image"
+			"Return to Main Menu")
 	
 			select opt in "${options[@]}"
 			do
 			case $opt in
 
 			"Python Tools")
-			echo -e "Test Python Tools"
+			Python_Arch
 			break
 			;;
 
 			"Ruby Tools")
-			echo -e "Test Ruby tools"
+			Ruby_Arch
 			break
 			;;
 
 			"DevOps Tools")
-			echo -e "Test DevOps tools"
+			DevOps_Arch
 			break
 			;;
 
 			"Low Level Tools")
-			echo -e "Test Low Level Tools"
+			Low_Level_Arch
+			break
+			;;
+
+			"Javascript Tools")
+			Javascript_Tools
+			break
+			;;
+
+			"Databases Tools")
+			Databases_Tools
 			break
 			;;
 
 			"Common Tools ie: text editors")
-			echo -e "Test Common Tools"
+			Common_Tools_Arch
 			break
 			;;
 
 			"Let's pimp my image")
-			echo -e "Test Pimp Image"
+			Pimp_My_Image
 			break
 			;;
 
 			"Upload my pimped image to docker hub")
-			echo -e "Test upload"
+			Upload_Image
 			break
 			;;
 
-			"Destroy my pimped image")
-			echo -e "Test destroy pimped image"
+			"Delete my pimped image")
+			Delete_Image
 			break
 			;;
 
-			"Return to Previous Menu")
-			break 2
+			"Return to Main Menu")
+			break 3
 			;;
 
 			*) echo -e "Opps, wrong option, try again :)"
@@ -150,6 +210,165 @@ Pimp_My_Container(){
 			done
 done
 
+}
+
+Return_Message(){
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
+Arch_PyPip(){
+echo -e "RUN pacman -Sy && pacman -S python python-pip --noconfirm" >> Dockerfile
+}
+
+Python_Arch(){
+	while true;do
+		echo -e "\e[1;32m*******************\e[0m"
+		echo -e "\033[5;32m*  Python tools  *\033[0m"
+		echo -e "\e[1;32m*******************\e[0m"
+		echo -e ""
+		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+		options=("Python 3"
+			"Pip 3"
+			"Flask"
+			"Django"
+			"Fabric"
+			"Return to Previous Menu")
+	
+			select opt in "${options[@]}"
+			do
+			case $opt in
+			
+			"Python 3")
+			echo -e "RUN pacman -Sy && pacman -S python --noconfirm" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Pip 3")
+			Arch_PyPip
+			Return_Message
+			break
+			;;
+
+			"Flask")
+			Arch_PyPip
+			echo "RUN pip install Flask" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Django")
+			Arch_PyPip
+			echo "RUN pip install Django" >> Dockerfile
+			break
+			;;
+
+			"Fabric")
+			Arch_PyPip
+			echo "RUN pip install fabric" >> Dockerfile
+			Return_Message
+			break
+			;;
+			
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+    			esac
+
+			done
+	done
+
+}
+
+Ruby_Arch(){
+	while true;do
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e "\033[5;32m*  Ruby tools  *\033[0m"
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Ruby"
+		"Rails"
+		"Sinatra"
+		"Jets"
+		"Return to Previous Menu")
+	
+		select opt in "${options[@]}"
+		do
+		case $opt in
+
+		"Ruby")
+		echo -e "RUN pacman -Sy && pacman -S ruby --noconfirm" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Rails")
+		echo -e "RUN pacman -Sy && pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "RUN gem install rails" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Sinatra")
+		echo -e "RUN pacman -Sy && pacman -S ruby --noconfirm" >> Dockerfile
+		echo -e "RUN gem install sinatra" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Jets")
+		echo -e "RUN pacman -Sy && pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "RUN gem install jets" >> Dockerfile
+		break
+		;;
+		
+		"Return to Previous Menu")
+		break 2
+		;;
+
+		*) echo -e "Opps, wrong option, try again :)"
+		;;
+    		esac
+
+		done
+	done
+	
+}
+
+DevOps_Arch(){
+	while true;do
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e "\033[5;32m*  DevOps tools  *\033[0m"
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Apache"
+		"Nginx"
+		"Puppet"
+		"HaProxy"
+		"UFW firewall"
+		"Curl"
+		"Dig")
+
+		select opt in "${options[@]}"
+		do
+			case $opt in
+			esac
+		done
+	done
+
+}
+
+Pimp_My_Image(){
+read -e -r -p "Which name do you want your pimped image?: " PIMPED_IMAGE_NAME
+sudo docker build -t "$PIMPED_IMAGE_NAME" .
+echo -e "Custom Image Pimped"
 }
 
 # Manage Volumes
@@ -197,7 +416,7 @@ Manage_Volumes(){
 Create_Volume(){
 echo -e  "\033[1;41m Creating Docker Volume\033[0m"
 sleep 1
-read -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
+read -e -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
 sudo docker volume create "$Volume_Name"
 sleep 1
 echo -e "\033[1;41m $Volume_Name Volume Created \033[0m"
@@ -213,7 +432,7 @@ sleep 3
 Delete_Volume(){
 echo -e "Deleting a custom volume"
 sleep 1.5
-read -r -p "Please give me name of the colume to delete: " VOLUME_DELETE_NAME
+read -e -r -p "Please give me name of the volume to delete: " VOLUME_DELETE_NAME
 sudo docker volume rm "$VOLUME_DELETE_NAME"
 echo -e "Custom Volume Deleted"
 sleep 1.5
@@ -271,7 +490,7 @@ sleep 3
 Download_Image(){
 echo "check on dockerhub.com which image do you want to download"
 echo "Only pass username/image ie: latorredev/python3 don't pass the docker pull command"
-read -r -p "Image to pull?: " IMAGE_NAME  
+read -e -r -p "Image to pull?: " IMAGE_NAME  
 echo "Downloading container"
 sudo docker pull "$IMAGE_NAME"
 echo "Container downloaded"
@@ -279,7 +498,7 @@ echo "Container downloaded"
 
 Delete_Image(){
 echo -e "Deleting image"
-read -r -p "Please give me the full name of the image to delete ie: latorredev/python3: " IMAGE_TO_DELETE_NAME
+read -e -r -p "Please give me the full name of the image to delete ie: latorredev/python3: " IMAGE_TO_DELETE_NAME
 sudo docker rmi "$IMAGE_TO_DELETE_NAME"
 echo -e "Image Deleted"
 }
@@ -383,10 +602,10 @@ options=("Container with custom ports"
 	do
 		case $opt in
 		"Container with custom ports")
-		read -r -p "Which name for your container?: " CONTAINER_NAME
-		read -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
-		read -r -p "Which are the host port?: " HOST_PORT
-		read -r -p "Which are the target port?: " TARGET_PORT
+		read -e -r -p "Which name for your container?: " CONTAINER_NAME
+		read -e -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
+		read -e -r -p "Which are the host port?: " HOST_PORT
+		read -e -r -p "Which are the target port?: " TARGET_PORT
 		echo -e "starting container"
 		sudo docker run -p "$HOST_PORT":"$TARGET_PORT" -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
 		echo -e "Container running with custom ports"
@@ -396,8 +615,8 @@ options=("Container with custom ports"
 		;;
 
 		"Default Container")
-		read -r -p "Which name for your container?: " CONTAINER_NAME
-		read -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
+		read -e -r -p "Which name for your container?: " CONTAINER_NAME
+		read -e -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
 		sudo docker run -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
 		echo "Running default container"
 		break
@@ -418,7 +637,7 @@ done
 }
 
 Stop_Container(){
-read -r -p "Give me the name of the container to stop: " STOP_NAME
+read -e -r -p "Give me the name of the container to stop: " STOP_NAME
 sudo docker stop "$STOP_NAME"
 echo "Container stopped"
 }
@@ -439,14 +658,14 @@ echo -e "All exited containers deleted"
 }
 
 Delete_Custom_Container(){
-read -r -p "Give me tehe name of the container to delete: " DELETE_CUSTOM
+read -e -r -p "Give me the name of the container to delete: " DELETE_CUSTOM
 sudo docker rm "$DELETE_CUSTOM"
 echo -e "Container Deleted"
 sleep 1.5
 }
 
 Connect_Container(){
-read -r -p "connecting to container, please, give me the name of the container: " CONTAINER_NAME
+read -e -r -p "connecting to container, please, give me the name of the container: " CONTAINER_NAME
 sudo docker exec -it  "$CONTAINER_NAME" /bin/bash
 echo "detached from container"
 }
@@ -479,7 +698,7 @@ echo -e "\e[1;32m**********************\e[0m"
 			;;
 
 			"Pimp my container")
-			Pimp_My_Container
+			Pimp_Choose_Distro_Base
 			break
 			;;
 
@@ -500,7 +719,7 @@ echo -e "\e[1;32m**********************\e[0m"
 
 			"Exit")
 			echo -e "Time to say goodbye"
-			sleep 2
+			sleep 1
     			break 2
     			;;
 			
