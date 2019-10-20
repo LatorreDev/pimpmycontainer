@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Script for pimp the image
+
+Pimp_My_Image(){
+read -e -r -p "Which name do you want your pimped image?: " PIMPED_IMAGE_NAME
+sudo docker build -t "$PIMPED_IMAGE_NAME" .
+echo -e "Custom Image Pimped"
+}
+
+Pimp_My_Image
