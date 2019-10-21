@@ -2,406 +2,35 @@
 # Pimp my container
 # Developed by David Latorre (LatorreDev)
 
+# Main Execution
+
+Pimp_It(){
+	./Bash/Base/Base
+}
+
 Install_Requirements(){
-./Bash/reqs/install_reqs
+	./Bash/reqs/install_reqs
 }
 
 Check_Docker(){
-./Bash/Docker/Docker_Service Check_Docker
+	./Bash/Docker/Docker_Service Check_Docker
 }
-# "Pimp my container"
 
 Pimp_Choose_Distro_Base(){
-
-	while true; do
-	echo -e "\e[1;41mChoose your distro that will be the base of your image\e[0m"
-	options=("Ubuntu 16.04"
-		"Ubuntu 18.04"
-		"Arch"
-		"Return to Previous Menu")
-	select opt in "${options[@]}"
-	do
-		case $opt in
-
-		"Ubuntu 16.04")
-		echo -e "FROM ubuntu/xenial" > Dockerfile
-		Pimp_My_Container_Ubuntu
-		break
-		;;
-
-		"Ubuntu 18.04")
-		echo -e "FROM ubuntu/bionic" > Dockerfile
-		Pimp_My_Container_Ubuntu
-		break
-		;;
-
-		"Arch")
-		echo -e "FROM archlinux/base" > Dockerfile
-		Pimp_My_Container_Arch
-		break
-		;;
-
-		"Return to Previous Menu")
-		break 2
-		;;
-
-		"42")
-		echo -e "The answer to life"
-		break
-		;;
-
-		*) echo -e "Opps, wrong option, try again :)"
-		;;
-		esac
-
-	done
-done
-
+	./Bash/Base/Base
 }
-
-Pimp_My_Container_Arch(){
-./Bash/Arch/Arch_Bash Pimp_On_Arch
-}
-
-DevOps_Arch(){
-	while true;do
-	echo -e "\e[1;32m*******************\e[0m"
-	echo -e "\033[5;32m*  DevOps tools  *\033[0m"
-	echo -e "\e[1;32m*******************\e[0m"
-	echo -e ""
-	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
-	options=("Apache"
-		"Nginx"
-		"Puppet"
-		"HaProxy"
-		"UFW firewall"
-		"Curl"
-		"Dig"
-		"Return to Previous Menu")
-
-		select opt in "${options[@]}"
-		do
-			case $opt in
-
-			"Return to Previous Menu")
-			break 2
-			;;
-
-			*) echo -e "Opps, wrong option, try again :)"
-			;;
-			esac
-
-		done
-	done
-
-}
-
-Pimp_My_Image(){
-read -e -r -p "Which name do you want your pimped image?: " PIMPED_IMAGE_NAME
-sudo docker build -t "$PIMPED_IMAGE_NAME" .
-echo -e "Custom Image Pimped"
-}
-
-# Manage Volumes
 
 Manage_Volumes(){
-			while true;do
-			echo -e "\e[1;32m**********************\e[0m"
-			echo -e "\033[5;32m*   Manage Volumes   *\033[0m"
-			echo -e "\e[1;32m**********************\e[0m"
-			options=("Create volume"
-				"List Volumes"
-				"Delete Volume"
-				"Return to Previous Menu")
-
-				select opt in "${options[@]}"
-				do                                                                              
-				case $opt in
-
-				"Create volume")
-				Create_Volume
-				break
-				;;
-
-				"List Volumes")
-				List_Volumes
-				break
-				;;
-
-				"Delete Volume")
-				Delete_Volume
-				break
-				;;
-
-				"Return to Previous Menu")
-				break 2
-				;;
-
-				*) echo -e "Opps, wrong option, try again :)"
-				;;
-    				esac
-				done
-			done
+	./Bash/Volumes/Volumes Manage_Volumes
 }
-
-Create_Volume(){
-echo -e  "\033[1;41m Creating Docker Volume\033[0m"
-sleep 1
-read -e -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
-sudo docker volume create "$Volume_Name"
-sleep 1
-echo -e "\033[1;41m $Volume_Name Volume Created \033[0m"
-sleep 1
-}
-
-List_Volumes(){
-echo 'Listing Volumes'
-sudo docker volume ls
-sleep 3
-}
-
-Delete_Volume(){
-echo -e "Deleting a custom volume"
-sleep 1.5
-read -e -r -p "Please give me name of the volume to delete: " VOLUME_DELETE_NAME
-sudo docker volume rm "$VOLUME_DELETE_NAME"
-echo -e "Custom Volume Deleted"
-sleep 1.5
-}
-
-# "Manage Images"
 
 Manage_Images(){
-while true;do
-	echo -e "\e[1;32m**********************\e[0m"
-	echo -e "\033[5;32m*   Manage Images   *\033[0m"
-	echo -e "\e[1;32m**********************\e[0m"
-	options=("List Images Installed"
-		"Download Image"
-		"Delete Image"
-		"Return to Previous Menu")
-
-		select opt in "${options[@]}"
-		do                                                                              
-			case $opt in
-
-			"List Images Installed")
-			List_Images_Installed
-			break
-			;;
-
-			"Download Image")
-			Download_Image
-			break
-			;;
-
-			"Delete Image")
-			Delete_Image
-			break
-			;;
-
-			"Return to Previous Menu")
-			break 2
-			;;
-
-			*) echo -e "Opps, wrong option, try again :)";;
-
-			esac
-		done
-done
-
+	./Bash/Images/Images Manage_Images
 }
-
-List_Images_Installed(){
-echo 'Listing Installed Docker Images'
-docker image ls
-sleep 3
-}
-
-Download_Image(){
-echo "check on dockerhub.com which image do you want to download"
-echo "Only pass username/image ie: latorredev/python3 don't pass the docker pull command"
-read -e -r -p "Image to pull?: " IMAGE_NAME  
-echo "Downloading container"
-sudo docker pull "$IMAGE_NAME"
-echo "Container downloaded"
-}
-
-Delete_Image(){
-echo -e "Deleting image"
-read -e -r -p "Please give me the full name of the image to delete ie: latorredev/python3: " IMAGE_TO_DELETE_NAME
-sudo docker rmi "$IMAGE_TO_DELETE_NAME"
-echo -e "Image Deleted"
-}
-
-# "Manage Containers"
 
 Manage_Containers(){
-while true;do
-	echo -e "\e[1;32m**********************\e[0m"
-	echo -e "\033[5;32m*  Manage Containers *\033[0m"
-	echo -e "\e[1;32m**********************\e[0m"
-	options=("List Running Containers"
-		"List All Containers"
-		"Run Container"
-		"Stop Container"
-		"Stop all unused containers"
-		"Delete Custom Container"
-		"Delete all exited containers"
-		"Connect to Container"
-		"Return to Previous Menu")
-
-		select opt in "${options[@]}"
-		do                                                                              
-			case $opt in
-
-			"List Running Containers")
-			List_Running_Containers
-			break
-			;;
-
-			"List All Containers")
-			List_All_Containers
-			break
-			;;
-
-			"Run Container")
-			Run_Container
-			break
-			;;
-
-			"Stop Container")
-			Stop_Container
-			break
-			;;
-
-			"Stop all unused containers")
-			Stop_All_Containers
-			break
-			;;
-
-			"Delete Custom Container")
-			Delete_Custom_Container
-			break
-			;;
-
-			"Delete all exited containers")
-			Delete_Exited
-			break
-			;;
-
-			"Connect to Container")
-			Connect_Container
-			break
-			;;
-
-			"Return to Previous Menu")
-			break 2
-			;;
-
-			*) echo -e "Opps, wrong option, try again :)"
-			sleep 1.5
-			break
-			;;
-
-			esac
-		done
-done
+	./Bash/Containers/Containers
 }
-
-List_Running_Containers(){
-echo -e "Active containers"
-sleep 1.5
-sudo docker ps
-sleep 1.5
-}
-
-List_All_Containers(){
-echo -e "All Containers"
-sleep 1.5
-sudo docker ps -a
-sleep 1.5
-}
-
-Run_Container(){
-while true; do
-echo -e "How do you want your container"
-options=("Container with custom ports"
-	"Default Container"
-	"Return to Previous Menu")
-	select opt in "${options[@]}"
-	do
-		case $opt in
-		"Container with custom ports")
-		read -e -r -p "Which name for your container?: " CONTAINER_NAME
-		read -e -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
-		read -e -r -p "Which are the host port?: " HOST_PORT
-		read -e -r -p "Which are the target port?: " TARGET_PORT
-		echo -e "starting container"
-		sudo docker run -p "$HOST_PORT":"$TARGET_PORT" -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
-		echo -e "Container running with custom ports"
-		sudo docker ps
-		sleep 1.5
-		break
-		;;
-
-		"Default Container")
-		read -e -r -p "Which name for your container?: " CONTAINER_NAME
-		read -e -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
-		sudo docker run -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
-		echo "Running default container"
-		break
-		;;
-
-		"Return to Previous Menu")
-		break 2
-		;;
-
-		*) echo -e "Opps, wrong option, try again :)"
-		sleep 1.5
-		break
-		;;
-
-		esac
-	done
-done
-}
-
-Stop_Container(){
-read -e -r -p "Give me the name of the container to stop: " STOP_NAME
-sudo docker stop "$STOP_NAME"
-echo "Container stopped"
-}
-
-Stop_All_Containers(){
-echo -e "Stopping all unused containers"
-sleep 1.5
-sudo docker stop "$(docker ps -aq)"
-echo -e "All unused containers stopped"
-sleep 1.5
-}
-
-Delete_Exited(){
-echo -e "Deleting all exited containers"
-sleep 1.5
-sudo docker rm "$(docker ps -aqf status=exited)"
-echo -e "All exited containers deleted"
-}
-
-Delete_Custom_Container(){
-read -e -r -p "Give me the name of the container to delete: " DELETE_CUSTOM
-sudo docker rm "$DELETE_CUSTOM"
-echo -e "Container Deleted"
-sleep 1.5
-}
-
-Connect_Container(){
-read -e -r -p "connecting to container, please, give me the name of the container: " CONTAINER_NAME
-sudo docker exec -it  "$CONTAINER_NAME" /bin/bash
-echo "detached from container"
-}
-
-# Main Execution
 
 while true; do
 echo -e "\e[1;32m**********************\e[0m"
@@ -429,7 +58,7 @@ echo -e "\e[1;32m**********************\e[0m"
 			;;
 
 			"Pimp my container")
-			Pimp_Choose_Distro_Base
+			Pimp_It
 			break
 			;;
 
