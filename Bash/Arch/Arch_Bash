@@ -50,12 +50,12 @@ while true;do
 			;;
 
 			"Databases Tools")
-			Databases_Tools
+			./Bash/Arch/Tools_Arch/Databases Databases_Arch
 			break
 			;;
 
 			"Common Tools ie: text editors")
-			Common_Tools_Arch
+			./Bash/Arch/Tools_Arch/Common_Tools Common_Arch
 			break
 			;;
 
