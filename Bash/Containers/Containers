@@ -14,6 +14,7 @@ while true;do
 		"Stop all unused containers"
 		"Delete Custom Container"
 		"Delete all exited containers"
+		"Kill'em all (Dangerous)"
 		"Connect to Container"
 		"Return to Previous Menu")
 
@@ -53,6 +54,11 @@ while true;do
 
 			"Delete all exited containers")
 			Delete_Exited
+			break
+			;;
+
+			"Kill'em all (Dangerous)")
+			Kill_All
 			break
 			;;
 
@@ -152,6 +158,14 @@ echo -e "Deleting all exited containers"
 sleep 1.5
 sudo docker rm "$(docker ps -aqf status=exited)"
 echo -e "All exited containers deleted"
+}
+
+Kill_All(){
+echo -e "STORMING ALL DOCKER!!!"
+sleep 1.5
+sudo docker system prune
+echo -e "All stormed"
+sleep 1.5
 }
 
 Delete_Custom_Container(){
