@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Bash Fucntions to install DevOps software based on Arch docker Image
+
+DevOps_Arch(){
+	while true;do
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e "\033[5;32m*  DevOps tools  *\033[0m"
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Apache"
+		"Nginx"
+		"Puppet"
+		"HaProxy"
+		"UFW firewall"
+		"Curl"
+		"Dig"
+		"Return to Previous Menu")
+
+		select opt in "${options[@]}"
+		do
+			case $opt in
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+			esac
+
+		done
+	done
+
+}
+
+"$@"
