@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# Python tools for Arch Docker image
+
+Return_Message(){
+echo -e "\e[1;37;42mTool Added\e[0m"
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
+Databases_Arch(){
+	while true;do
+		echo -e "\e[1;32m**********************\e[0m"
+		echo -e "\033[5;32m*  databases tools  *\033[0m"
+		echo -e "\e[1;32m**********************\e[0m"
+		echo -e ""
+		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+		options=("MariaDB"
+			"Return to Previous Menu")
+
+			select opt in "${options[@]}"
+			do
+			case $opt in
+
+			"MariaDB")
+#			echo "RUN pacman -Sy" >> Dockerfile
+#			echo "RUN pacman -S mariadb --noconfirm" >> Dockerfile
+#			echo 'CMD ["mysqld"]' >> Dockerfile
+			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
+			sleep 2
+#			Return_Message
+			break
+			;;
+#			"MySQL")
+#			echo -e "RUN pacman -Sy" >> Dockerfile
+#			echo -e "RUN pacman -S git sudo binutils go make --noconfirm" >> Dockerfile
+#			echo -e "RUN useradd --no-create-home --shell=/bin/false build && usermod -L build" >> Dockerfile
+#			echo -e "RUN echo 'build ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers" >> Dockerfile
+#echo -e "RUN echo 'root ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers" >> Dockerfile
+#			echo -e "USER build" >> Dockerfile
+#			echo -e "RUN sudo git clone https://aur.archlinux.org/yay.git" >> Dockerfile
+#			echo -e "RUN sudo chmod -R +777 yay" >> Dockerfile
+#			echo -e "RUN cd yay && makepkg -si" >> Dockerfile
+#			echo -e "RUN yay -S mysql --noconfirm" >> Dockerfile
+#			Return_Message
+#			break
+#			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+    			esac
+
+			done
+	done
+	
+}
+
+"$@"
