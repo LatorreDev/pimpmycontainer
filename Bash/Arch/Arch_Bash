@@ -35,7 +35,7 @@ while true;do
 			;;
 
 			"DevOps Tools")
-			DevOps_Arch
+			./Bash/Arch/Tools_Arch/DevOps DevOps_Arch
 			break
 			;;
 
