@@ -2,6 +2,7 @@
 # Python tools for Arch Docker image
 
 Return_Message(){
+echo -e "\e[1;37;42mTool Added\e[0m"
 echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
 echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
 sleep 2
@@ -23,6 +24,7 @@ Python_Arch(){
 			"Flask"
 			"Django"
 			"Fabric"
+			"SQLAlchemy"
 			"Return to Previous Menu")
 	
 			select opt in "${options[@]}"
@@ -60,7 +62,14 @@ Python_Arch(){
 			Return_Message
 			break
 			;;
-			
+
+			"SQLAlchemy")
+			Arch_PyPip
+			echo "RUN pip install SQLAlchemy" >> Dockerfile
+			Return_Message
+			break
+			;;
+
 			"Return to Previous Menu")
 			break 2
 			;;
