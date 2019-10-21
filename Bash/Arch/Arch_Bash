@@ -40,12 +40,12 @@ while true;do
 			;;
 
 			"Low Level Tools")
-			Low_Level_Arch
+			./Bash/Arch/Tools_Arch/Low_Level Low_Level_Arch
 			break
 			;;
 
 			"Javascript Tools")
-			Javascript_Tools
+			./Bash/Arch/Tools_Arch/Javascript Javascript_Arch
 			break
 			;;
 
