@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# Bash Fucntions to install DevOps software based on Arch docker Image
+
+Return_Message(){
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
+DevOps_Arch(){
+	while true;do
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e "\033[5;32m*  DevOps tools  *\033[0m"
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Apache"
+		"Nginx"
+		"Puppet"
+		"HaProxy"
+		"UFW firewall"
+		"Dig"
+		"Return to Previous Menu")
+
+		select opt in "${options[@]}"
+		do
+			case $opt in
+
+			"Apache")
+			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
+			sleep 2
+			break
+			;;
+
+			"Nginx")
+			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
+			sleep 2
+			break
+			;;
+
+			"Puppet")
+			echo "RUN pacman -S puppet --noconfirm" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"HaProxy")
+			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
+			sleep 2
+			break
+			;;
+
+			"UFW firewall")
+			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
+			sleep 2
+			break
+			;;
+
+			"Dig")
+			echo "RUN pacman -S bind-tools --noconfirm" >> Dockerfile
+			break
+			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+			esac
+
+		done
+	done
+
+}
+
+"$@"

@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# Script for run ArchLinux options
+
+Pimp_On_Arch(){
+while true;do
+		echo -e "\e[1;32m********************************\e[0m"
+		echo -e "\033[5;32m*  Pimp my Container for Arch  *\033[0m"
+		echo -e "\e[1;32m********************************\e[0m"
+		echo -e ""
+		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+		options=("Python Tools"
+			"Ruby Tools"
+			"DevOps Tools"
+			"Low Level Tools"
+			"Javascript Tools"
+			"Databases Tools"
+			"Common Tools ie: text editors"
+			"Let's pimp my image"
+			"Upload my pimped image to docker hub"
+			"Delete my pimped image"
+			"Return to Main Menu")
+	
+			select opt in "${options[@]}"
+			do
+			case $opt in
+
+			"Python Tools")
+			./Bash/Arch/Tools_Arch/Python Python_Arch
+			break
+			;;
+
+			"Ruby Tools")
+			./Bash/Arch/Tools_Arch/Ruby Ruby_Arch
+			break
+			;;
+
+			"DevOps Tools")
+			./Bash/Arch/Tools_Arch/DevOps DevOps_Arch
+			break
+			;;
+
+			"Low Level Tools")
+			./Bash/Arch/Tools_Arch/Low_Level Low_Level_Arch
+			break
+			;;
+
+			"Javascript Tools")
+			./Bash/Arch/Tools_Arch/Javascript Javascript_Arch
+			break
+			;;
+
+			"Databases Tools")
+			Databases_Tools
+			break
+			;;
+
+			"Common Tools ie: text editors")
+			Common_Tools_Arch
+			break
+			;;
+
+			"Let's pimp my image")
+			./Bash/Pimp/Pimp_Image
+			break
+			;;
+
+			"Upload my pimped image to docker hub")
+			Upload_Image
+			break
+			;;
+
+			"Delete my pimped image")
+			Delete_Image
+			break
+			;;
+
+			"Return to Main Menu")
+			break 3
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+    			esac
+
+			done
+done
+}
+
+"$@"
