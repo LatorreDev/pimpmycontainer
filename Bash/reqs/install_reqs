@@ -5,6 +5,7 @@ Install_Requirements(){
 while true; do
         echo -e "\e[1;41mChoose your distro wisely\e[0m"
         options=("Ubuntu 16"
+		"Ubuntu 18"
                 "Arch Linux"
                 "Return to previous Menu")
         select opt in "${options[@]}"
@@ -17,8 +18,13 @@ while true; do
                         break 2
                         ;;
 
+			"Ubuntu 18")
+			echo "under development"
+			break 2
+			;;
+
                         "Arch Linux")
-                        sudo pacman -S docker git
+                        sudo pacman -S docker docker-compose git
                         break 2
                         ;;
 
