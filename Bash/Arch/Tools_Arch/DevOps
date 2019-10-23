@@ -17,8 +17,6 @@ DevOps_Arch(){
 	options=("Apache"
 		"Nginx"
 		"Puppet"
-		"HaProxy"
-		"UFW firewall"
 		"Dig"
 		"Return to Previous Menu")
 
@@ -52,25 +50,15 @@ CMD [\"nginx\", \"-g\", \"daemon off;\"]\"" >> Dockerfile
 			;;
 
 			"Puppet")
-			echo "RUN pacman -S puppet --noconfirm" >> Dockerfile
+			echo -e "RUN pacman -Sy" >> Dockerfile
+			echo -e "RUN pacman -S puppet --noconfirm" >> Dockerfile
 			Return_Message
-			break
-			;;
-
-			"HaProxy")
-			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
-			sleep 2
-			break
-			;;
-
-			"UFW firewall")
-			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
-			sleep 2
 			break
 			;;
 
 			"Dig")
 			echo "RUN pacman -S bind-tools --noconfirm" >> Dockerfile
+			Return_Message
 			break
 			;;
 
