@@ -27,7 +27,10 @@ DevOps_Arch(){
 			case $opt in
 
 			"Apache")
-			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
+			echo -e "RUN pacman -Sy && pacman -S apache --noconfirm
+CMD [\"usr/sbin/httpd\", \"-D\", \"FOREGROUND\"]
+EXPOSE 80" >> Dockerfile
+			Return_Message
 			sleep 2
 			break
 			;;
