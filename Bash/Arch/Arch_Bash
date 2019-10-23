@@ -60,7 +60,7 @@ while true;do
 			;;
 
 			"Let's pimp my image")
-			./Bash/Pimp/Pimp_Image
+			./Bash/Pimp/Pimp_Image Pimp_My_Image
 			break
 			;;
 
