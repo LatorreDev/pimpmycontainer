@@ -26,7 +26,7 @@ Base_Image(){
 		;;
 
 		"Arch")
-		echo -e "FROM archlinux/base" > Dockerfile
+		echo -e "FROM archlinux" > Dockerfile
 		./Bash/Arch/Arch_Bash Pimp_On_Arch
 
 		break

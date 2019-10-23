@@ -65,12 +65,12 @@ while true;do
 			;;
 
 			"Upload my pimped image to docker hub")
-			Upload_Image
+			./Bash/Pimp/Pimp_Image Upload_Image
 			break
 			;;
 
 			"Delete my pimped image")
-			Delete_Image
+			./Bash/Images/Images Delete_Image
 			break
 			;;
 

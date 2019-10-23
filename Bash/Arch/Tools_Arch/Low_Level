@@ -2,7 +2,7 @@
 # Bash Fucntions to install DevOps software based on Arch docker Image
 
 Return_Message(){
-echo -e "Tool Added"
+echo -e "\e[1;37;42mTool Added\e[0m"
 sleep 1
 echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
 echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"

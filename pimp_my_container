@@ -78,7 +78,7 @@ echo -e "\e[1;32m**********************\e[0m"
 			;;
 
 			"Exit")
-			echo -e "Time to say goodbye"
+			echo -e "\e[1;37;42mTime to say goodbye\e[0m"
 			sleep 1
     			break 2
     			;;

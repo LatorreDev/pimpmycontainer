@@ -23,12 +23,16 @@ Databases_Arch(){
 			case $opt in
 
 			"MariaDB")
-#			echo "RUN pacman -Sy" >> Dockerfile
-#			echo "RUN pacman -S mariadb --noconfirm" >> Dockerfile
-#			echo 'CMD ["mysqld"]' >> Dockerfile
-			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
+			echo -e "RUN pacman -Sy" >> Dockerfile
+			echo -e "RUN pacman -S mariadb --noconfirm" >> Dockerfile
+			echo -e "VOLUME /var/lib/mysql" >> Dockerfile
+			echo -e "COPY /entrypoints/mysql-entrypoint.sh /usr/local/bin" >> Dockerfile
+			echo -e "RUN ln -s usr/local/bin/mysql-entrypoint.sh /mysql-entrypoint.sh" >> Dockerfile
+			echo -e "ENTRYPOINT ["mysql-entrypoint.sh"]" >> Dockerfile
+			echo "EXPOSE 3306 33060" >> Dockerfile
+			echo 'CMD ["mysqld"]' >> Dockerfile			
+			Return_Message
 			sleep 2
-#			Return_Message
 			break
 			;;
 #			"MySQL")

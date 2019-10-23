@@ -2,6 +2,7 @@
 # Bash Fucntions to install DevOps software based on Arch docker Image
 
 Return_Message(){
+echo -e "\e[1;37;42mTool Added\e[0m"
 echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
 echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
 sleep 2
@@ -17,8 +18,6 @@ DevOps_Arch(){
 	options=("Apache"
 		"Nginx"
 		"Puppet"
-		"HaProxy"
-		"UFW firewall"
 		"Dig"
 		"Return to Previous Menu")
 
@@ -27,37 +26,40 @@ DevOps_Arch(){
 			case $opt in
 
 			"Apache")
-			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
+			echo -e "RUN pacman -Sy && pacman -S apache --noconfirm
+CMD [\"usr/sbin/httpd\", \"-D\", \"FOREGROUND\"]
+EXPOSE 80" >> Dockerfile
+			Return_Message
 			sleep 2
 			break
 			;;
 
 			"Nginx")
-			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
-			sleep 2
-			break
-			;;
+			echo -e "RUN pacman -Syyu nginx --noconfirm
 
-			"Puppet")
-			echo "RUN pacman -S puppet --noconfirm" >> Dockerfile
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+&& ln -sf /dev/stderr /var/log/nginx/error.log
+
+VOLUME [\"/var/cache/nginx\"]
+
+EXPOSE 80 443
+
+CMD [\"nginx\", \"-g\", \"daemon off;\"]\"" >> Dockerfile
 			Return_Message
 			break
 			;;
 
-			"HaProxy")
-			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
-			sleep 2
-			break
-			;;
-
-			"UFW firewall")
-			echo -e "Feature still under development, sorry for the inconvenience, please watch this as our kindly excuse https://youtu.be/4IP_E7efGWE?t=5"
-			sleep 2
+			"Puppet")
+			echo -e "RUN pacman -Sy" >> Dockerfile
+			echo -e "RUN pacman -S puppet --noconfirm" >> Dockerfile
+			Return_Message
 			break
 			;;
 
 			"Dig")
 			echo "RUN pacman -S bind-tools --noconfirm" >> Dockerfile
+			Return_Message
 			break
 			;;
 

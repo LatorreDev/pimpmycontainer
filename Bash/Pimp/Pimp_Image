@@ -7,4 +7,8 @@ sudo docker build -t "$PIMPED_IMAGE_NAME" .
 echo -e "Custom Image Pimped"
 }
 
-Pimp_My_Image
+Upload_Image(){
+sudo docker login
+}
+
+"$@"
