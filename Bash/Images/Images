@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# Bash Functions to handle the images options of Pimp My container
+
+Manage_Images(){
+
+while true;do
+	echo -e "\e[1;32m**********************\e[0m"
+	echo -e "\033[5;32m*   Manage Images   *\033[0m"
+	echo -e "\e[1;32m**********************\e[0m"
+	options=("List Images Installed"
+		"Download Image"
+		"Delete Image"
+		"Return to Previous Menu")
+
+		select opt in "${options[@]}"
+		do                                                                              
+			case $opt in
+
+			"List Images Installed")
+			List_Images_Installed
+			break
+			;;
+
+			"Download Image")
+			Download_Image
+			break
+			;;
+
+			"Delete Image")
+			Delete_Image
+			break
+			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)";;
+
+			esac
+		done
+done
+
+}
+
+List_Images_Installed(){
+echo 'Listing Installed Docker Images'
+docker image ls
+sleep 3
+}
+
+Download_Image(){
+echo "check on dockerhub.com which image do you want to download"
+echo "Only pass username/image ie: latorredev/python3 don't pass the docker pull command"
+read -e -r -p "Image to pull?: " IMAGE_NAME  
+echo "Downloading container"
+sudo docker pull "$IMAGE_NAME"
+echo "Container downloaded"
+}
+
+Delete_Image(){
+echo -e "Deleting image"
+read -e -r -p "Please give me the full name of the image to delete ie: latorredev/python3: " IMAGE_TO_DELETE_NAME
+sudo docker rmi "$IMAGE_TO_DELETE_NAME"
+echo -e "Image Deleted"
+}
+
+"$@"

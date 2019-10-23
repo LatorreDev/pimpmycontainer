@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Custom menu to choose the base distro
+
+Base_Image(){
+
+	while true; do
+	echo -e "\e[1;41mChoose your distro that will be the base of your image\e[0m"
+	options=("Ubuntu 16.04"
+		"Ubuntu 18.04"
+		"Arch"
+		"Return to Previous Menu")
+	select opt in "${options[@]}"
+	do
+		case $opt in
+
+		"Ubuntu 16.04")
+		echo -e "FROM ubuntu/xenial" > Dockerfile
+		Pimp_My_Container_Ubuntu
+		break
+		;;
+
+		"Ubuntu 18.04")
+		echo -e "FROM ubuntu/bionic" > Dockerfile
+		Pimp_My_Container_Ubuntu
+		break
+		;;
+
+		"Arch")
+		echo -e "FROM archlinux" > Dockerfile
+		./Bash/Arch/Arch_Bash Pimp_On_Arch
+
+		break
+		;;
+
+		"Return to Previous Menu")
+		break 2
+		;;
+
+		"42")
+		echo -e "The answer to life"
+		break
+		;;
+
+		*) echo -e "Opps, wrong option, try again :)"
+		;;
+		esac
+
+	done
+done
+}
+
+Base_Image
+
