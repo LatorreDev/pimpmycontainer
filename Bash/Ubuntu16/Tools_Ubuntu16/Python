@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Python tools for Arch Docker image
+# Python tools for Ubuntu16 Docker image
 
 Return_Message(){
 echo -e "\e[1;37;42mTool Added\e[0m"
@@ -8,19 +8,21 @@ echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option 
 sleep 2
 }
 
-Arch_PyPip(){
-echo -e "RUN pacman -Sy && pacman -S python python-pip --noconfirm" >> Dockerfile
+Pip3_Ubuntu(){
+echo -e "RUN apt install -y python3-pip" >> Dockerfile
+echo -e "RUN pip3 install pep8" >> Dockerfile
+echo -e "RUN pip3 install pycodestyle\n" >> Dockerfile 
 }
 
-Python_Arch(){
+
+Python_Ubuntu16(){
 	while true;do
 		echo -e "\e[1;32m*******************\e[0m"
 		echo -e "\033[5;32m*  Python tools  *\033[0m"
 		echo -e "\e[1;32m*******************\e[0m"
 		echo -e ""
 		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
-		options=("Python 3"
-			"Pip 3"
+		options=("Pip 3"
 			"Flask"
 			"Django"
 			"Fabric"
@@ -31,41 +33,47 @@ Python_Arch(){
 			do
 			case $opt in
 			
-			"Python 3")
-			echo -e "RUN pacman -Sy && pacman -S python --noconfirm" >> Dockerfile
-			Return_Message
-			break
-			;;
-
 			"Pip 3")
-			Arch_PyPip
+			echo -e "# Pip" >> Dockerfile
+			Pip3_Ubuntu
 			Return_Message
 			break
 			;;
 
 			"Flask")
-			Arch_PyPip
-			echo "RUN pip install Flask" >> Dockerfile
+			echo -e "# Flask" >> Dockerfile
+			Ubuntu16_PyPip
+			echo "RUN pip3 install Flask" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Django")
-			Arch_PyPip
+			echo -e "# Django" >> Dockerfile
+			Ubuntu16_Pypip
 			echo "RUN pip install Django" >> Dockerfile
+			Return_Message
 			break
 			;;
 
 			"Fabric")
-			Arch_PyPip
-			echo "RUN pip install fabric" >> Dockerfile
+			echo -e "# Fabric" >> Dockerfile
+			echo -e	"RUN apt-get install -y libffi-dev libssl-dev build-essential python3-dev libpython-dev" >> Dockerfile
+			echo -e "RUN pip3 install cryptography==2.4.2" >> Dockerfile
+			echo -e "RUN pip3 install fabric" >> Dockerfile
+			echo -e "RUN pip3 install --upgrade fabric" >> Dockerfile
+			echo -e "RUN pip install fabric\n" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"SQLAlchemy")
-			Arch_PyPip
-			echo "RUN pip install SQLAlchemy" >> Dockerfile
+			echo -e "# SQLAlchemy" >> Dockerfile
+			Ubuntu16_Pypip
+			echo -e "RUN pip3 install SQLAlchemy" >> Dockerfile
+			echo -e "RUN pip3 install sqlalchemy" >> Dockerfile
+			echo -e "RUN pip3 install sqlalchemy --upgrade" >> Dockerfile
+			echo -e "RUN pip3 install mysqlclient" >> Dockerfile
 			Return_Message
 			break
 			;;
@@ -84,5 +92,3 @@ Python_Arch(){
 }
 
 "$@"
-
-
