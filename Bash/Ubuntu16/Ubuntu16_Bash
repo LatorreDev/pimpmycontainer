@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# Script for run Ubuntu16Linux options
+
+Pimp_On_Ubuntu16(){
+while true;do
+		echo -e "\e[1;32m*************************************\e[0m"
+		echo -e "\033[5;32m*  Pimp my Container for Ubuntu16  *\033[0m"
+		echo -e "\e[1;32m*************************************\e[0m"
+		echo -e ""
+		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+		options=("Python Tools"
+			"Ruby Tools"
+			"DevOps Tools"
+			"Low Level Tools"
+			"Javascript Tools"
+			"Databases Tools"
+			"Common Tools ie: text editors"
+			"Let's pimp my image"
+			"Upload my pimped image to docker hub"
+			"Delete my pimped image"
+			"Return to Main Menu")
+	
+			select opt in "${options[@]}"
+			do
+			case $opt in
+
+			"Python Tools")
+			./Bash/Ubuntu16/Tools_Ubuntu16/Python Python_Ubuntu16
+			break
+			;;
+
+			"Ruby Tools")
+			./Bash/Ubuntu16/Tools_Ubuntu16/Ruby Ruby_Ubuntu16
+			break
+			;;
+
+			"DevOps Tools")
+			./Bash/Ubuntu16/Tools_Ubuntu16/DevOps DevOps_Ubuntu16
+			break
+			;;
+
+			"Low Level Tools")
+			./Bash/Ubuntu16/Tools_Ubuntu16/Low_Level Low_Level_Ubuntu16
+			break
+			;;
+
+			"Javascript Tools")
+			./Bash/Ubuntu16/Tools_Ubuntu16/Javascript Javascript_Ubuntu16
+			break
+			;;
+
+			"Databases Tools")
+			./Bash/Ubuntu16/Tools_Ubuntu16/Databases Databases_Ubuntu16
+			break
+			;;
+
+			"Common Tools ie: text editors")
+			./Bash/Ubuntu16/Tools_Ubuntu16/Common_Tools Common_Ubuntu16
+			break
+			;;
+
+			"Let's pimp my image")
+			./Bash/Pimp/Pimp_Image Pimp_My_Image
+			break
+			;;
+
+			"Upload my pimped image to docker hub")
+			./Bash/Pimp/Pimp_Image Upload_Image
+			break
+			;;
+
+			"Delete my pimped image")
+			./Bash/Images/Images Delete_Image
+			break
+			;;
+
+			"Return to Main Menu")
+			break 3
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+    			esac
+
+			done
+done
+}
+
+"$@"
