@@ -42,38 +42,38 @@ Python_Ubuntu16(){
 
 			"Flask")
 			echo -e "# Flask" >> Dockerfile
-			Ubuntu16_PyPip
-			echo "RUN pip3 install Flask" >> Dockerfile
+			Pip3_Ubuntu
+			echo "RUN pip3 install Flask\n" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Django")
 			echo -e "# Django" >> Dockerfile
-			Ubuntu16_Pypip
-			echo "RUN pip install Django" >> Dockerfile
+			Pip3_Ubuntu
+			echo "RUN pip install Django\n" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Fabric")
 			echo -e "# Fabric" >> Dockerfile
+			Pip3_Ubuntu
 			echo -e	"RUN apt-get install -y libffi-dev libssl-dev build-essential python3-dev libpython-dev" >> Dockerfile
 			echo -e "RUN pip3 install cryptography==2.4.2" >> Dockerfile
 			echo -e "RUN pip3 install fabric" >> Dockerfile
-			echo -e "RUN pip3 install --upgrade fabric" >> Dockerfile
-			echo -e "RUN pip install fabric\n" >> Dockerfile
+			echo -3 "RUN pip3 install --upgrade fabric" >> Dockerfile
+			echo "RUN pip install fabric\n" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"SQLAlchemy")
 			echo -e "# SQLAlchemy" >> Dockerfile
-			Ubuntu16_Pypip
-			echo -e "RUN pip3 install SQLAlchemy" >> Dockerfile
-			echo -e "RUN pip3 install sqlalchemy" >> Dockerfile
+			echo -e "RUN pip install SQLAlchemy" >> Dockerfile
+			echo -e	"RUN pip3 install sqlalchemy" >> Dockerfile
 			echo -e "RUN pip3 install sqlalchemy --upgrade" >> Dockerfile
-			echo -e "RUN pip3 install mysqlclient" >> Dockerfile
+			echo -e "RUN pip3 install mysqlclient\n" >> Dockerfile
 			Return_Message
 			break
 			;;
