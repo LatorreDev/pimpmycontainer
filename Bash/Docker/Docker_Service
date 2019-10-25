@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Script for Handle the docker Service
 
-Docker_Menu_Arch(){
+Docker_Menu(){
 while true; do
 	echo -e "\e[1;41mChecking Docker Status\e[0m"
 	options=("Docker Status"
@@ -62,17 +62,13 @@ while true; do
 	select opt in "${options[@]}"
 	do
 		case $opt in
-			"ubuntu 16")
-			echo -e "\e[1;41m Starting Docker Daemon\e[0m"
-			sleep 1
-			sudo service docker start
-			echo -e "\e[1;41m Docker Daemon Started\e[0m"
-			sleep 1
+			"Ubuntu 16")
+			Docker_Menu
 			break 2
 			;;
 
 			"Arch Linux")
-			Docker_Menu_Arch
+			Docker_Menu
 			break 2
 			;;
 
