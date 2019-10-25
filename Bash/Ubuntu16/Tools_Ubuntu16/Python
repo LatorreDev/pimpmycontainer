@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+# Python tools for Ubuntu16 Docker image
+
+Return_Message(){
+echo -e "\e[1;37;42mTool Added\e[0m"
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
+Pip3_Ubuntu(){
+echo -e "RUN apt install -y python3-pip" >> Dockerfile
+echo -e "RUN pip3 install pep8" >> Dockerfile
+echo -e "RUN pip3 install pycodestyle\n" >> Dockerfile 
+}
+
+
+Python_Ubuntu16(){
+	while true;do
+		echo -e "\e[1;32m*******************\e[0m"
+		echo -e "\033[5;32m*  Python tools  *\033[0m"
+		echo -e "\e[1;32m*******************\e[0m"
+		echo -e ""
+		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+		options=("Pip 3"
+			"Flask"
+			"Django"
+			"Fabric"
+			"SQLAlchemy"
+			"Return to Previous Menu")
+	
+			select opt in "${options[@]}"
+			do
+			case $opt in
+			
+			"Pip 3")
+			echo -e "# Pip" >> Dockerfile
+			Pip3_Ubuntu
+			Return_Message
+			break
+			;;
+
+			"Flask")
+			echo -e "# Flask" >> Dockerfile
+			Pip3_Ubuntu
+			echo "RUN pip3 install Flask\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Django")
+			echo -e "# Django" >> Dockerfile
+			Pip3_Ubuntu
+			echo "RUN pip install Django\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Fabric")
+			echo -e "# Fabric" >> Dockerfile
+			Pip3_Ubuntu
+			echo -e	"RUN apt-get install -y libffi-dev libssl-dev build-essential python3-dev libpython-dev" >> Dockerfile
+			echo -e "RUN pip3 install cryptography==2.4.2" >> Dockerfile
+			echo -e "RUN pip3 install fabric" >> Dockerfile
+			echo -3 "RUN pip3 install --upgrade fabric" >> Dockerfile
+			echo "RUN pip install fabric\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"SQLAlchemy")
+			echo -e "# SQLAlchemy" >> Dockerfile
+			echo -e "RUN pip install SQLAlchemy" >> Dockerfile
+			echo -e	"RUN pip3 install sqlalchemy" >> Dockerfile
+			echo -e "RUN pip3 install sqlalchemy --upgrade" >> Dockerfile
+			echo -e "RUN pip3 install mysqlclient\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			;;
+    			esac
+
+			done
+	done
+
+}
+
+"$@"

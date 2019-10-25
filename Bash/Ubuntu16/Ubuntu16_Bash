@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Script for run ArchLinux options
+# Script for run Ubuntu16Linux options
 
-Pimp_On_Arch(){
+Pimp_On_Ubuntu16(){
 while true;do
-		echo -e "\e[1;32m********************************\e[0m"
-		echo -e "\033[5;32m*  Pimp my Container for Arch  *\033[0m"
-		echo -e "\e[1;32m********************************\e[0m"
+		echo -e "\e[1;32m*************************************\e[0m"
+		echo -e "\033[5;32m*  Pimp my Container for Ubuntu16  *\033[0m"
+		echo -e "\e[1;32m*************************************\e[0m"
 		echo -e ""
 		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
 		options=("Python Tools"
@@ -25,37 +25,37 @@ while true;do
 			case $opt in
 
 			"Python Tools")
-			./Bash/Arch/Tools_Arch/Python Python_Arch
+			./Bash/Ubuntu16/Tools_Ubuntu16/Python Python_Ubuntu16
 			break
 			;;
 
 			"Ruby Tools")
-			./Bash/Arch/Tools_Arch/Ruby Ruby_Arch
+			./Bash/Ubuntu16/Tools_Ubuntu16/Ruby Ruby_Ubuntu16
 			break
 			;;
 
 			"DevOps Tools")
-			./Bash/Arch/Tools_Arch/DevOps DevOps_Arch
+			./Bash/Ubuntu16/Tools_Ubuntu16/DevOps DevOps_Ubuntu16
 			break
 			;;
 
 			"Low Level Tools")
-			./Bash/Arch/Tools_Arch/Low_Level Low_Level_Arch
+			./Bash/Ubuntu16/Tools_Ubuntu16/Low_Level Low_Level_Ubuntu16
 			break
 			;;
 
 			"Javascript Tools")
-			./Bash/Arch/Tools_Arch/Javascript Javascript_Arch
+			./Bash/Ubuntu16/Tools_Ubuntu16/Javascript Javascript_Ubuntu16
 			break
 			;;
 
 			"Databases Tools")
-			./Bash/Arch/Tools_Arch/Databases Databases_Arch
+			./Bash/Ubuntu16/Tools_Ubuntu16/Databases Databases_Ubuntu16
 			break
 			;;
 
 			"Common Tools ie: text editors")
-			./Bash/Arch/Tools_Arch/Common_Tools Common_Arch
+			./Bash/Ubuntu16/Tools_Ubuntu16/Common_Tools Common_Ubuntu16
 			break
 			;;
 
