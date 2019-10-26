@@ -26,9 +26,10 @@ Base_Image(){
 		;;
 
 		"Arch")
-		echo -e "FROM archlinux" > Dockerfile
+		echo -e "FROM archlinux\n" > Dockerfile
+		echo -e "# Update Archlinux databases" >> Dockerfile
+		echo -e "RUN pacman -Syi\n" >> Dockerfile
 		./Bash/Arch/Arch_Bash Pimp_On_Arch
-
 		break
 		;;
 
