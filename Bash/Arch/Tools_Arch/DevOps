@@ -47,21 +47,21 @@ VOLUME [\"/var/cache/nginx\"]
 
 EXPOSE 80 443
 
-CMD [\"nginx\", \"-g\", \"daemon off;\"]\"" >> Dockerfile
+CMD [\"nginx\", \"-g\", \"daemon off;\"]\" \n" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Puppet")
 			echo -e "# Puppet" >> Dockerfile
-			echo -e "RUN pacman -S puppet --noconfirm" >> Dockerfile
+			echo -e "RUN pacman -S puppet --noconfirm\n" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Dig")
 			echo -e "# Dig" >> Dockerfile
-			echo "RUN pacman -S bind-tools --noconfirm" >> Dockerfile
+			echo "RUN pacman -S bind-tools --noconfirm\n" >> Dockerfile
 			Return_Message
 			break
 			;;

@@ -43,7 +43,7 @@ Ruby_Arch(){
 
 		"Sinatra")
 		echo -e "# Sinatra" >> Dockerfile
-		echo -e "&& pacman -S ruby --noconfirm" >> Dockerfile
+		echo -e "RUN pacman -S ruby --noconfirm" >> Dockerfile
 		echo -e "RUN gem install sinatra\n" >> Dockerfile
 		Return_Message
 		break
