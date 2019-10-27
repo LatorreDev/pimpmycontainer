@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 # Ruby Tools for Arch Docker Image
 
+Return_Message(){
+echo -e "\e[1;37;42mTool Added\e[0m"
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
 Ruby_Arch(){
 
 	while true;do
@@ -20,27 +27,31 @@ Ruby_Arch(){
 		case $opt in
 
 		"Ruby")
-		echo -e "RUN pacman -Sy && pacman -S ruby --noconfirm" >> Dockerfile
+		echo -e "# Ruby" >> Dockerfile
+		echo -e "RUN pacman -S ruby --noconfirm" >> Dockerfile
 		Return_Message
 		break
 		;;
 
 		"Rails")
-		echo -e "RUN pacman -Sy && pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "# Rails" >> Dockerfile
+		echo -e "RUN pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
 		echo -e "RUN gem install rails" >> Dockerfile
 		Return_Message
 		break
 		;;
 
 		"Sinatra")
-		echo -e "RUN pacman -Sy && pacman -S ruby --noconfirm" >> Dockerfile
+		echo -e "# Sinatra" >> Dockerfile
+		echo -e "&& pacman -S ruby --noconfirm" >> Dockerfile
 		echo -e "RUN gem install sinatra" >> Dockerfile
 		Return_Message
 		break
 		;;
 
 		"Jets")
-		echo -e "RUN pacman -Sy && pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "# Jets" >> Dockerfile
+		echo -e "RUN pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
 		echo -e "RUN gem install jets" >> Dockerfile
 		Return_Message
 		break
@@ -57,13 +68,6 @@ Ruby_Arch(){
 		done
 	done
 	
-}
-
-Return_Message(){
-echo -e "\e[1;37;42mTool Added\e[0m"
-echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
-echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
-sleep 2
 }
 
 "$@"
