@@ -9,8 +9,13 @@ sleep 2
 }
 
 Arch_PyPip(){
-echo -e "RUN pacman -Sy && pacman -S python python-pip --noconfirm" >> Dockerfile
+	echo -e "RUN pacman -S python-pip --noconfirm" >> Dockerfile
 }
+
+#Warning_Message(){
+#echo -e "\033[5;32mWarning: In order to use the programs, I strongly encourage you install pip 3 first \e[0m"
+#sleep 1
+#}
 
 Python_Arch(){
 	while true;do
@@ -18,9 +23,11 @@ Python_Arch(){
 		echo -e "\033[5;32m*  Python tools  *\033[0m"
 		echo -e "\e[1;32m*******************\e[0m"
 		echo -e ""
+		Warning_Message
+		echo -e ""
 		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
 		options=("Python 3"
-			"Pip 3"
+#			"Pip 3"
 			"Flask"
 			"Django"
 			"Fabric"
@@ -32,39 +39,40 @@ Python_Arch(){
 			case $opt in
 			
 			"Python 3")
-			echo -e "RUN pacman -Sy && pacman -S python --noconfirm" >> Dockerfile
+			echo -e "# Python 3" >> Dockerfile
+			echo -e "RUN pacman -S python --noconfirm" >> Dockerfile
 			Return_Message
 			break
 			;;
 
-			"Pip 3")
-			Arch_PyPip
-			Return_Message
-			break
-			;;
+#			"Pip 3")
+#			Arch_PyPip
+#			Return_Message
+#			break
+#			;;
 
 			"Flask")
-			Arch_PyPip
-			echo "RUN pip install Flask" >> Dockerfile
+			echo -e "# Flask" >> Dockerfile
+			echo -e "RUN pip install Flask" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Django")
-			Arch_PyPip
-			echo "RUN pip install Django" >> Dockerfile
+			echo -e "# Django"
+			echo -e "RUN pip install Django" >> Dockerfile
 			break
 			;;
 
 			"Fabric")
-			Arch_PyPip
-			echo "RUN pip install fabric" >> Dockerfile
+			echo -e "# Fabric"
+			echo -e "RUN pip install fabric" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"SQLAlchemy")
-			Arch_PyPip
+			echo -e "# Flask"
 			echo "RUN pip install SQLAlchemy" >> Dockerfile
 			Return_Message
 			break
@@ -84,5 +92,3 @@ Python_Arch(){
 }
 
 "$@"
-
-
