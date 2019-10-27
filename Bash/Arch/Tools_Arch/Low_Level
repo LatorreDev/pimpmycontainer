@@ -27,13 +27,15 @@ Low_Level_Arch(){
 			case $opt in
 
 			"Gcc")
-			echo "RUN pacman -S gcc --noconfirm" >> Dockerfile
+			echo "# GCC" >> Dockerfile
+			echo "RUN pacman -S gcc --noconfirm\n" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Valgrind")
-			echo "RUN pacman -S valgrind --noconfirm" >> Dockerfile
+			echo "# Valgrind" >> Dockerfile
+			echo "RUN pacman -S valgrind --noconfirm\n" >> Dockerfile
 			Return_Message
 			break
 			;;
