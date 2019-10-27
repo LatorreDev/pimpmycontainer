@@ -27,12 +27,14 @@ Common_Arch(){
 			case $opt in
 
 			"Vim")
-			echo "RUN pacman -Sy && pacman -S vim --noconfirm" >> Dockerfile
+			echo -e "# Vim" >> Dockerfile
+			echo "RUN pacman -S vim --noconfirm" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Emacs")
+			echo -e "# EMACS" >> Dockerfile
 			echo "RUN pacman -Sy && pacman -S  emacs-nox --noconfirm" >> Dockerfile
 			Return_Message
 			break
