@@ -8,6 +8,11 @@ echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option 
 sleep 2
 }
 
+Default_npm(){
+echo -e "# npm" >> Dockerfile
+echo -e "RUN pacman -S npm --noconfirm\n" >> Dockerfile
+}
+
 Javascript_Arch(){
 	while true;do
 		echo -e "\e[1;32m***********************\e[0m"
@@ -15,7 +20,7 @@ Javascript_Arch(){
 		echo -e "\e[1;32m***********************\e[0m"
 		echo -e ""
 		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
-		options=("npm"
+		options=(
 			"Nodejs"
 			"Return to Previous Menu")
 	
@@ -24,14 +29,14 @@ Javascript_Arch(){
 				case $opt in
 
 					"npm")
-					echo -e "RUN pacman -Sy && pacman -S npm --noconfirm" >> Dockerfile
 					Return_Message
 					break
 					;;
 
 					"Nodejs")
-					echo -e "RUN pacman -Sy && pacman -S npm --noconfirm" >> Dockerfile
-					echo -e "RUN npm install nodejs" >> Dockerfile
+					echo -e "# Nodejs" >> Dockerfile
+					echo -e "RUN pacman -S npm --noconfirm" >> Dockerfile
+					echo -e "RUN npm install nodejs\n" >> Dockerfile
 					Return_Message
 					break
 					;;

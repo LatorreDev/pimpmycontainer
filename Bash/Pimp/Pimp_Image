@@ -8,7 +8,16 @@ echo -e "Custom Image Pimped"
 }
 
 Upload_Image(){
-sudo docker login
+		echo -e "First you need to run your image"
+		read -e -r -p "Which name for your container that will run your image?: " CONTAINER_NAME
+		read -e -r -p "Which are you dockerhub username?: " DOCKERHUB_USERNAME
+		read -e -r -p "Which are you dockerhub repo?: " DOCKERHUB_REPO
+		CONTAINER_IMAGE_NAME=$(sudo docker image ls | sed -n "2p" | cut -d " " -f 1)
+		sudo docker run -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
+		# CONTAINER_ID=$(sudo docker ps -a -q | head -1 | cut -d " " -f 1)
+		sudo docker tag "$CONTAINER_IMAGE_NAME" "$DOCKERHUB_USERNAME"/"$DOCKERHUB_REPO"
+		sudo docker login
+		sudo docker push "$DOCKERHUB_USERNAME"/"$DOCKERHUB_REPO"
 }
 
 "$@"
