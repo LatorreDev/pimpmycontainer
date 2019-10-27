@@ -28,7 +28,7 @@ Ruby_Arch(){
 
 		"Ruby")
 		echo -e "# Ruby" >> Dockerfile
-		echo -e "RUN pacman -S ruby --noconfirm" >> Dockerfile
+		echo -e "RUN pacman -S ruby --noconfirm\n" >> Dockerfile
 		Return_Message
 		break
 		;;
@@ -36,7 +36,7 @@ Ruby_Arch(){
 		"Rails")
 		echo -e "# Rails" >> Dockerfile
 		echo -e "RUN pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
-		echo -e "RUN gem install rails" >> Dockerfile
+		echo -e "RUN gem install rails\n" >> Dockerfile
 		Return_Message
 		break
 		;;
@@ -44,7 +44,7 @@ Ruby_Arch(){
 		"Sinatra")
 		echo -e "# Sinatra" >> Dockerfile
 		echo -e "&& pacman -S ruby --noconfirm" >> Dockerfile
-		echo -e "RUN gem install sinatra" >> Dockerfile
+		echo -e "RUN gem install sinatra\n" >> Dockerfile
 		Return_Message
 		break
 		;;
@@ -52,7 +52,7 @@ Ruby_Arch(){
 		"Jets")
 		echo -e "# Jets" >> Dockerfile
 		echo -e "RUN pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
-		echo -e "RUN gem install jets" >> Dockerfile
+		echo -e "RUN gem install jets\n" >> Dockerfile
 		Return_Message
 		break
 		;;
