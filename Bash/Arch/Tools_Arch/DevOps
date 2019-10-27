@@ -26,16 +26,18 @@ DevOps_Arch(){
 			case $opt in
 
 			"Apache")
-			echo -e "RUN pacman -Sy && pacman -S apache --noconfirm
+			echo -e "# Apache" >> Dockerfile
+			echo -e "RUN pacman -S apache --noconfirm
 CMD [\"usr/sbin/httpd\", \"-D\", \"FOREGROUND\"]
-EXPOSE 80" >> Dockerfile
+EXPOSE 80\n" >> Dockerfile
 			Return_Message
 			sleep 2
 			break
 			;;
 
 			"Nginx")
-			echo -e "RUN pacman -Syyu nginx --noconfirm
+			echo -e "# Nginx" >> Dockerfile
+			echo -e "RUN pacman -S nginx --noconfirm
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
@@ -51,13 +53,14 @@ CMD [\"nginx\", \"-g\", \"daemon off;\"]\"" >> Dockerfile
 			;;
 
 			"Puppet")
-			echo -e "RUN pacman -Sy" >> Dockerfile
+			echo -e "# Puppet" >> Dockerfile
 			echo -e "RUN pacman -S puppet --noconfirm" >> Dockerfile
 			Return_Message
 			break
 			;;
 
 			"Dig")
+			echo -e "# Dig" >> Dockerfile
 			echo "RUN pacman -S bind-tools --noconfirm" >> Dockerfile
 			Return_Message
 			break
