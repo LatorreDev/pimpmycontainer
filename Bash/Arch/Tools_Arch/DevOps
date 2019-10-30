@@ -61,7 +61,7 @@ CMD [\"nginx\", \"-g\", \"daemon off;\"]\" \n" >> Dockerfile
 
 			"Dig")
 			echo -e "# Dig" >> Dockerfile
-			echo "RUN pacman -S bind-tools --noconfirm\n" >> Dockerfile
+			echo -e "RUN pacman -S bind-tools --noconfirm\n" >> Dockerfile
 			Return_Message
 			break
 			;;
