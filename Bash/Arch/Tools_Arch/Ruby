@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Ruby Tools for Arch Docker Image
+
+Return_Message(){
+echo -e "\e[1;37;42mTool Added\e[0m"
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
+Ruby_Arch(){
+
+	while true;do
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e "\033[5;32m*  Ruby tools  *\033[0m"
+	echo -e "\e[1;32m*******************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Ruby"
+		"Rails"
+		"Sinatra"
+		"Jets"
+		"Return to Previous Menu")
+	
+		select opt in "${options[@]}"
+		do
+		case $opt in
+
+		"Ruby")
+		echo -e "# Ruby" >> Dockerfile
+		echo -e "RUN pacman -S ruby --noconfirm\n" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Rails")
+		echo -e "# Rails" >> Dockerfile
+		echo -e "RUN pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "RUN gem install rails\n" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Sinatra")
+		echo -e "# Sinatra" >> Dockerfile
+		echo -e "RUN pacman -S ruby --noconfirm" >> Dockerfile
+		echo -e "RUN gem install sinatra\n" >> Dockerfile
+		Return_Message
+		break
+		;;
+
+		"Jets")
+		echo -e "# Jets" >> Dockerfile
+		echo -e "RUN pacman -S ruby gcc gawk make git --noconfirm" >> Dockerfile
+		echo -e "RUN gem install jets\n" >> Dockerfile
+		Return_Message
+		break
+		;;
+		
+		"Return to Previous Menu")
+		break 2
+		;;
+
+		*) echo -e "Opps, wrong option, try again :)"
+		;;
+    		esac
+
+		done
+	done
+	
+}
+
+"$@"

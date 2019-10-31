@@ -1,0 +1,184 @@
+#!/usr/bin/env bash
+# Bash Functions to Handle Containers
+
+Menu(){
+
+while true;do
+	echo -e "\e[1;32m**********************\e[0m"
+	echo -e "\033[5;32m*  Manage Containers *\033[0m"
+	echo -e "\e[1;32m**********************\e[0m"
+	options=("List Running Containers"
+		"List All Containers"
+		"Run Container"
+		"Stop Container"
+		"Stop all unused containers"
+		"Delete Custom Container"
+		"Delete all exited containers"
+		"Kill'em all (Dangerous)"
+		"Connect to Container"
+		"Return to Previous Menu")
+
+		select opt in "${options[@]}"
+		do                                                                              
+			case $opt in
+
+			"List Running Containers")
+			List_Running_Containers
+			break
+			;;
+
+			"List All Containers")
+			List_All_Containers
+			break
+			;;
+
+			"Run Container")
+			Run_Container
+			break
+			;;
+
+			"Stop Container")
+			Stop_Container
+			break
+			;;
+
+			"Stop all unused containers")
+			Stop_All_Containers
+			break
+			;;
+
+			"Delete Custom Container")
+			Delete_Custom_Container
+			break
+			;;
+
+			"Delete all exited containers")
+			Delete_Exited
+			break
+			;;
+
+			"Kill'em all (Dangerous)")
+			Kill_All
+			break
+			;;
+
+			"Connect to Container")
+			Connect_Container
+			break
+			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			sleep 1.5
+			break
+			;;
+
+			esac
+		done
+done
+}
+
+List_Running_Containers(){
+echo -e "Active Containers"
+sleep 1.5
+sudo docker ps
+sleep 1.5
+}
+
+List_All_Containers(){
+echo -e "All Containers"
+sleep 1.5
+sudo docker ps -a
+sleep 1.5
+}
+
+Run_Container(){
+while true; do
+echo -e "How do you want your container"
+options=("Container with custom ports"
+	"Default Container"
+	"Return to Previous Menu")
+	select opt in "${options[@]}"
+	do
+		case $opt in
+		"Container with custom ports")
+		read -e -r -p "Which name for your container?: " CONTAINER_NAME
+		read -e -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
+		read -e -r -p "Which are the host port?: " HOST_PORT
+		read -e -r -p "Which are the target port?: " TARGET_PORT
+		echo -e "starting container"
+		sudo docker run -p "$HOST_PORT":"$TARGET_PORT" -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
+		echo -e "Container running with custom ports"
+		sudo docker ps
+		sleep 1.5
+		break
+		;;
+
+		"Default Container")
+		read -e -r -p "Which name for your container?: " CONTAINER_NAME
+		read -e -r -p "Which container Image?: " CONTAINER_IMAGE_NAME
+		sudo docker run -d -it --name "$CONTAINER_NAME" "$CONTAINER_IMAGE_NAME"
+		echo "Running default container"
+		break
+		;;
+
+		"Return to Previous Menu")
+		break 2
+		;;
+
+		*) echo -e "Opps, wrong option, try again :)"
+		sleep 1.5
+		break
+		;;
+
+		esac
+	done
+done
+}
+
+Stop_Container(){
+read -e -r -p "Give me the name of the container to stop: " STOP_NAME
+sudo docker stop "$STOP_NAME"
+echo "Container stopped"
+}
+
+Stop_All_Containers(){
+echo -e "Stopping all unused containers"
+sleep 1.5
+sudo docker stop "$(docker ps -aq)"
+echo -e "All unused containers stopped"
+sleep 1.5
+}
+
+Delete_Exited(){
+echo -e "Deleting all exited containers"
+sleep 1.5
+sudo docker rm "$(docker ps -aqf status=exited)"
+echo -e "All exited containers deleted"
+}
+
+Kill_All(){
+echo -e "STORMING ALL DOCKER!!!"
+sleep 1.5
+sudo docker system prune
+echo -e "All stormed"
+sleep 1.5
+}
+
+Delete_Custom_Container(){
+read -e -r -p "Give me the name of the container to delete: " DELETE_CUSTOM
+sudo docker rm "$DELETE_CUSTOM"
+echo -e "Container Deleted"
+sleep 1.5
+}
+
+Connect_Container(){
+read -e -r -p "connecting to container, please, give me the name of the container: " CONTAINER_NAME
+sudo docker exec -it  "$CONTAINER_NAME" /bin/bash
+echo "detached from container"
+}
+
+Menu

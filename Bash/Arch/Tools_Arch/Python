@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# Python tools for Arch Docker image
+
+Return_Message(){
+echo -e "\e[1;37;42mTool Added\e[0m"
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
+Python_Arch(){
+	while true;do
+		echo -e "\e[1;32m*******************\e[0m"
+		echo -e "\033[5;32m*  Python tools  *\033[0m"
+		echo -e "\e[1;32m*******************\e[0m"
+		echo -e ""
+		echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+		options=("Python 3"
+			"Flask"
+			"Django"
+			"Fabric"
+			"SQLAlchemy"
+			"Return to Previous Menu")
+	
+			select opt in "${options[@]}"
+			do
+			case $opt in
+			
+			"Python 3")
+			echo -e "# Python 3" >> Dockerfile
+			echo -e "RUN pacman -S python --noconfirm\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Flask")
+			echo -e "# Flask" >> Dockerfile
+			echo -e "RUN pip install Flask\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Django")
+			echo -e "# Django" >> Dockerfile
+			echo -e "RUN pip install Django\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Fabric")
+			echo -e "# Fabric" >> Dockerfile
+			echo -e "RUN pip install fabric\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"SQLAlchemy")
+			echo -e "# Flask" >> Dockerfile
+			echo "RUN pip install SQLAlchemy\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Opps, wrong option, try again :)"
+			break
+			;;
+    			esac
+
+			done
+	done
+
+}
+
+"$@"

@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Script for install the requirements
+
+Install_Requirements(){
+while true; do
+        echo -e "\e[1;41mChoose your distro wisely\e[0m"
+        options=("Ubuntu 16"
+		"Ubuntu 18"
+                "Arch Linux"
+                "Return to previous Menu")
+        select opt in "${options[@]}"
+        do
+                case $opt in
+                        "Ubuntu 16")
+                        sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+                        sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+                        sudo apt update && sudo apt install -y docker docker-engine git
+                        break 2
+                        ;;
+
+			"Ubuntu 18")
+			echo "under development"
+			break 2
+			;;
+
+                        "Arch Linux")
+                        sudo pacman -S docker docker-compose git
+                        break 2
+                        ;;
+
+                        "Return to previous Menu")
+                        break 2
+                        ;;
+                        *) echo -e "Invalid Option, Try again"
+                        sleep 1.5
+                        break
+                        ;;
+                        esac
+                done
+done
+}
+
+Install_Requirements

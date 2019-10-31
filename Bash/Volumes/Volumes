@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# Functions to manage the docker volumes for pimp my container
+
+Manage_Volumes(){
+			while true;do
+			echo -e "\e[1;32m**********************\e[0m"
+			echo -e "\033[5;32m*   Manage Volumes   *\033[0m"
+			echo -e "\e[1;32m**********************\e[0m"
+			options=("Create volume"
+				"List Volumes"
+				"Delete Volume"
+				"Return to Previous Menu")
+
+				select opt in "${options[@]}"
+				do                                                                              
+				case $opt in
+
+				"Create volume")
+				Create_Volume
+				break
+				;;
+
+				"List Volumes")
+				List_Volumes
+				break
+				;;
+
+				"Delete Volume")
+				Delete_Volume
+				break
+				;;
+
+				"Return to Previous Menu")
+				break 2
+				;;
+
+				*) echo -e "Opps, wrong option, try again :)"
+				;;
+    				esac
+				done
+			done
+}
+
+Create_Volume(){
+echo -e  "\033[1;41m Creating Docker Volume\033[0m"
+sleep 1
+read -e -p $'\e[1;32;40m Which name do you want for your volume? (No blank spaces allowed)\e[0m:' Volume_Name
+sudo docker volume create "$Volume_Name"
+sleep 1
+echo -e "\033[1;41m $Volume_Name Volume Created \033[0m"
+sleep 1
+}
+
+List_Volumes(){
+echo 'Listing Volumes'
+sudo docker volume ls
+sleep 3
+}
+
+Delete_Volume(){
+echo -e "Deleting a custom volume"
+sleep 1.5
+read -e -r -p "Please give me name of the volume to delete: " VOLUME_DELETE_NAME
+sudo docker volume rm "$VOLUME_DELETE_NAME"
+echo -e "Custom Volume Deleted"
+sleep 1.5
+}
+
+"$@"

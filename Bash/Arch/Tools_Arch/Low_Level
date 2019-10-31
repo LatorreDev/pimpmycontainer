@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Bash Fucntions to install DevOps software based on Arch docker Image
+
+Return_Message(){
+echo -e "\e[1;37;42mTool Added\e[0m"
+sleep 1
+echo -e "\e[1;32mIf you want to add some tool more, return to previous menus and hit the option, when you finish, return to previous menu\e[0m"
+echo -e "\e[1;32mof pimp my container and choose the let's pimp my image option to build your custom image\e[0m"
+sleep 2
+}
+
+Low_Level_Arch(){
+	while true;do
+	echo -e "\e[1;32m**********************\e[0m"
+	echo -e "\033[5;32m*  Low Level tools  *\033[0m"
+	echo -e "\e[1;32m**********************\e[0m"
+	echo -e ""
+	echo -e "\e[1;32m Choose which tools do you want for your custom image \e[0m"
+	options=("Gcc"
+		"Valgrind"
+		"Return to Previous Menu"
+		)
+
+		
+		select opt in "${options[@]}"
+		do
+			case $opt in
+
+			"Gcc")
+			echo -e "# GCC" >> Dockerfile
+			echo -e "RUN pacman -S gcc --noconfirm\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Valgrind")
+			echo -e "# Valgrind" >> Dockerfile
+			echo -e "RUN pacman -S valgrind --noconfirm\n" >> Dockerfile
+			Return_Message
+			break
+			;;
+
+			"Return to Previous Menu")
+			break 2
+			;;
+
+			*) echo -e "Oops, wrong option, try again"
+			;;
+			esac
+		done
+	done
+}
+
+"$@"
