@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html class="js svg audio canvas cssremunit csscalc cssgradients supports no-touchevents video cssanimations cssfilters flexbox flexboxlegacy no-flexboxtweener flexwrap csstransforms csstransforms3d csstransitions backgroundblendmode cl-loaded" style="" data-useragent="Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Pimp my container</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="Pimp%20my%20container_files/base.css">
+    <link rel="stylesheet" href="Pimp%20my%20container_files/vendor.css">
+    <link rel="stylesheet" href="Pimp%20my%20container_files/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="Pimp%20my%20container_files/modernizr.js"></script>
+    <script src="Pimp%20my%20container_files/pace.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="http://127.0.0.1/pimpmycontainer/docs/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://127.0.0.1/pimpmycontainer/docs/favicon.ico" type="image/x-icon">
+
+<style type="text/css">/*
+ * contextMenu.js v 1.4.0
+ * Author: Sudhanshu Yadav
+ * s-yadav.github.com
+ * Copyright (c) 2013 Sudhanshu Yadav.
+ * Dual licensed under the MIT and GPL licenses
+**/
+
+.iw-contextMenu {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.10) !important;
+    border: 1px solid #c8c7cc !important;
+    border-radius: 11px !important;
+    display: none;
+    z-index: 1000000132;
+    max-width: 300px !important;
+    width: auto !important;
+}
+
+.dark-mode .iw-contextMenu,
+.TnITTtw-dark-mode.iw-contextMenu,
+.TnITTtw-dark-mode .iw-contextMenu {
+    border-color: #747473 !important;
+}
+
+.iw-cm-menu {
+    background: #fff !important;
+    color: #000 !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    overflow: visible !important;
+}
+
+.dark-mode .iw-cm-menu,
+.TnITTtw-dark-mode.iw-cm-menu,
+.TnITTtw-dark-mode .iw-cm-menu {
+    background: #525251 !important;
+    color: #FFF !important;
+}
+
+.iw-curMenu {
+}
+
+.iw-cm-menu li {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif !important;
+    list-style: none !important;
+    padding: 10px !important;
+    padding-right: 20px !important;
+    border-bottom: 1px solid #c8c7cc !important;
+    font-weight: 400 !important;
+    cursor: pointer !important;
+    position: relative !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+    line-height: inherit !important;
+    border-radius: 0 !important;
+    display: block !important;
+}
+
+.dark-mode .iw-cm-menu li, .TnITTtw-dark-mode .iw-cm-menu li {
+    border-bottom-color: #747473 !important;
+}
+
+.iw-cm-menu li:first-child {
+    border-top-left-radius: 11px !important;
+    border-top-right-radius: 11px !important;
+}
+
+.iw-cm-menu li:last-child {
+    border-bottom-left-radius: 11px !important;
+    border-bottom-right-radius: 11px !important;
+    border-bottom: none !important;
+}
+
+.iw-mOverlay {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0px !important;
+    left: 0px !important;
+    background: #FFF !important;
+    opacity: .5 !important;
+}
+
+.iw-contextMenu li.iw-mDisable {
+    opacity: 0.3 !important;
+    cursor: default !important;
+}
+
+.iw-mSelected {
+    background-color: #F6F6F6 !important;
+}
+
+.dark-mode .iw-mSelected, .TnITTtw-dark-mode .iw-mSelected {
+    background-color: #676766 !important;
+}
+
+.iw-cm-arrow-right {
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 5px solid transparent !important;
+    border-bottom: 5px solid transparent !important;
+    border-left: 5px solid #000 !important;
+    position: absolute !important;
+    right: 5px !important;
+    top: 50% !important;
+    margin-top: -5px !important;
+}
+
+.dark-mode .iw-cm-arrow-right, .TnITTtw-dark-mode .iw-cm-arrow-right {
+    border-left-color: #FFF !important;
+}
+
+.iw-mSelected > .iw-cm-arrow-right {
+}
+
+/*context menu css end */</style><style type="text/css">@-webkit-keyframes load4 {
+    0%,
+    100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}
+
+@keyframes load4 {
+    0%,
+    100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}</style><style type="text/css">/* This is not a zero-length file! */</style></head>
+
+<body id="top" data-aos-easing="ease-in-sine" data-aos-duration="600" data-aos-delay="300" class="  pace-done"><div class="pace  pace-inactive"><div class="pace-progress" style="transform: translate3d(100%, 0px, 0px);" data-progress-text="100%" data-progress="99">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+
+    <div id="preloader" style="display: none;">
+        <div id="loader" style="display: none;"></div>
+    </div>
+
+
+    <!-- header 
+    ================================================== -->
+    <header class="s-header sticky">
+
+        <div class="header-logo">
+            <a class="site-logo" href="http://127.0.0.1/pimpmycontainer/docs/index.html">
+                <img src="Pimp%20my%20container_files/pimplogo.png" alt="Homepage">
+            </a>
+        </div>
+
+        <nav class="row header-nav-wrap wide">
+            <ul class="header-main-nav">
+                <li class="current"><a class="smoothscroll" href="#home" title="intro">Intro</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                <li><a class="smoothscroll" href="#features" title="features">Features</a></li>
+            </ul>
+
+            <ul class="header-social">
+                <li><a href="#0"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+
+        <a class="header-menu-toggle" href="#"><span>Menu</span></a>
+    
+    </header> <!-- end header -->
+
+
+    <!-- home
+    ================================================== -->
+    <section id="home" class="s-home target-section">
+
+        <div class="home-image-part"></div>
+
+        <div class="home-content">
+
+            <div class="row home-content__main wide">
+
+                <h1>
+                An Amazing CLI App <br>
+                To manage Docker
+                </h1>
+
+                <h3>
+               An amazing CLI app to create and run your custom docker images  and containers and push them to Docker hub
+                </h3>
+
+                <div class="home-content__button">
+                    <a class="btn-video" href="https://youtu.be/zuIZEGNG1FE" data-lity="">
+                        <span class="video-icon"></span>
+                    </a>
+                    <a href="#download" class="smoothscroll btn btn--primary btn--large">
+                        Get The App
+                    </a>
+                </div>
+
+            </div> <!-- end home-content__main -->
+
+            <a href="#about" class="home-scroll smoothscroll">
+                <span class="home-scroll__text">Scroll Down</span>
+                <span class="home-scroll__icon"></span>
+            </a>
+
+        </div> <!-- end home-content -->
+
+    </section> <!-- end s-home -->
+
+
+    <!-- about
+    ================================================== -->
+    <section id="about" class="s-about target-section">
+
+        <div class="row section-header narrower align-center aos-init" data-aos="fade-up">
+            <div class="col-full">
+                <h1 class="display-1">
+                    The Most Popular And Number 1 Mail App.
+                </h1>
+                <p class="lead">
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea.
+                </p>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row about-desc aos-init" data-aos="fade-up">
+            <div class="col-full about-desc__slider slick-initialized slick-slider slick-dotted" role="toolbar">
+
+                  <!-- end about-desc__slide -->
+
+                  <!-- end about-desc__slide -->
+
+                  <!-- end about-desc__slide -->
+
+                  <!-- end about-desc__slide -->
+
+            <div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 3870px; transform: translate3d(-1161px, 0px, 0px);" role="listbox"><div class="about-desc__slide slick-slide slick-cloned" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide01" data-slick-index="-3" aria-hidden="true">
+                    <h3 class="item-title">User-Friendly.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide slick-cloned" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide02" data-slick-index="-2" aria-hidden="true">
+                    <h3 class="item-title">Powerful.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide slick-cloned" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide03" data-slick-index="-1" aria-hidden="true">
+                    <h3 class="item-title">Secure.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide slick-current slick-active" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide00" data-slick-index="0" aria-hidden="false">
+                    <h3 class="item-title">Smart.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide slick-active" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide01" data-slick-index="1" aria-hidden="false">
+                    <h3 class="item-title">User-Friendly.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide slick-active" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide02" data-slick-index="2" aria-hidden="false">
+                    <h3 class="item-title">Powerful.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide03" data-slick-index="3" aria-hidden="true">
+                    <h3 class="item-title">Secure.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide slick-cloned" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide00" data-slick-index="4" aria-hidden="true">
+                    <h3 class="item-title">Smart.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide slick-cloned" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide01" data-slick-index="5" aria-hidden="true">
+                    <h3 class="item-title">User-Friendly.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div><div class="about-desc__slide slick-slide slick-cloned" style="width: 387px;" tabindex="-1" role="option" aria-describedby="slick-slide02" data-slick-index="6" aria-hidden="true">
+                    <h3 class="item-title">Powerful.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea aut cumque eos.
+                    </p>
+                </div></div></div><ul class="slick-dots" style="" role="tablist"><li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation00" id="slick-slide00"><button type="button" data-role="none" role="button" tabindex="0">1</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation01" id="slick-slide01"><button type="button" data-role="none" role="button" tabindex="0">2</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation02" id="slick-slide02"><button type="button" data-role="none" role="button" tabindex="0">3</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation03" id="slick-slide03"><button type="button" data-role="none" role="button" tabindex="0">4</button></li></ul></div> <!-- end about-desc__slider -->
+        </div> <!-- end about-desc -->
+
+        <div class="row about-bottom-image aos-init" data-aos="fade-up">
+            <img src="Pimp%20my%20container_files/app-screen-1400.png" srcset="images/app-screen-600.png 600w, 
+                         images/app-screen-1400.png 1400w, 
+                         images/app-screen-2800.png 2800w" sizes="(max-width: 2800px) 100vw, 2800px" alt="App Screenshots"> 
+         </div>
+
+    </section> <!-- end s-about -->
+
+
+    <!-- process
+    ================================================== -->
+    <section id="process" class="s-process">
+
+        <div class="row">
+            <div class="col-full text-center aos-init" data-aos="fade-up">
+                <h2 class="display-2">How The App Works?</h2>
+            </div>
+        </div>
+
+        <div class="row process block-1-4 block-m-1-2 block-tab-full">
+            <div class="col-block item-process aos-init" data-aos="fade-up">
+                <div class="item-process__text">
+                    <h3>Sign Up</h3>
+                    <p>
+                    Quos dolores saepe mollitia deserunt accusamus autem
+ reprehenderit. Voluptas facere animi explicabo non quis magni 
+recusandae. 
+                    Numquam debitis pariatur omnis facere unde. 
+                    </p>
+                </div>
+            </div>
+            <div class="col-block item-process aos-init" data-aos="fade-up">
+                <div class="item-process__text">
+                    <h3>Create</h3>
+                    <p>
+                    Quos dolores saepe mollitia deserunt accusamus autem
+ reprehenderit. Voluptas facere animi explicabo non quis magni 
+recusandae. 
+                    Numquam debitis pariatur omnis facere unde. 
+                    </p>
+                </div>
+            </div>
+            <div class="col-block item-process aos-init" data-aos="fade-up">
+                <div class="item-process__text">
+                    <h3>Compose</h3>
+                    <p>
+                    Quos dolores saepe mollitia deserunt accusamus autem
+ reprehenderit. Voluptas facere animi explicabo non quis magni 
+recusandae. 
+                    Numquam debitis pariatur omnis facere unde. 
+                    </p>
+                </div>
+            </div>
+            <div class="col-block item-process aos-init" data-aos="fade-up">
+                <div class="item-process__text">
+                    <h3>Send</h3>
+                    <p>
+                    Quos dolores saepe mollitia deserunt accusamus autem
+ reprehenderit. Voluptas facere animi explicabo non quis magni 
+recusandae. 
+                    Numquam debitis pariatur omnis facere unde. 
+                    </p>
+                </div>
+            </div>
+        </div> <!-- end process -->
+
+        <div class="row process-bottom-image aos-init" data-aos="fade-up">
+            <img src="Pimp%20my%20container_files/phone-app-screens-1000.png" srcset="images/phone-app-screens-600.png 600w, 
+                         images/phone-app-screens-1000.png 1000w, 
+                         images/phone-app-screens-2000.png 2000w" sizes="(max-width: 2000px) 100vw, 2000px" alt="App Screenshots"> 
+         </div>
+        
+    </section> <!-- end s-process -->
+
+
+    <!-- features
+    ================================================== -->
+    <section id="features" class="s-features target-section">
+
+        <div class="row section-header narrower align-center has-bottom-sep aos-init" data-aos="fade-up">
+            <div class="col-full">
+                <h1 class="display-1">
+                    Loaded With Features You Would Surely Love.
+                </h1>
+                <p class="lead">
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea.
+                </p>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row bit-narrow features block-1-2 block-mob-full">
+
+            <div class="col-block item-feature aos-init" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-upload"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Cloud Based</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature aos-init" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-video-camera"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Voice &amp; Video</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature aos-init" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-shield"></i>
+                </div>  
+                <div class="item-feature__text">
+                    <h3 class="item-title">Always Secure</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature aos-init" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-lego-block"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Play Games</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature aos-init" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-chat"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Group Chat</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+    
+            <div class="col-block item-feature aos-init" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-wallet"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Payments</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+        </div> <!-- end features -->
+
+        <div class="testimonials-wrap aos-init" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-full testimonials-header">
+                    <h2 class="display-2">1 Million+ Users Can't Be Wrong.</h2>
+                </div>
+            </div>
+
+            <div class="row testimonials">
+
+                <div class="col-full testimonials__slider slick-initialized slick-slider slick-dotted" role="toolbar">
+
+                     <!-- end testimonials__slide -->
+
+                     <!-- end testimonials__slide -->
+
+                     <!-- end testimonials__slide -->
+                    
+                <div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 4060px; transform: translate3d(-1160px, 0px, 0px);" role="listbox"><div class="testimonials__slide slick-slide slick-cloned" style="width: 580px;" tabindex="-1" role="option" aria-describedby="slick-slide11" data-slick-index="-2" aria-hidden="true">
+                        <img src="Pimp%20my%20container_files/user-02.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Sasuke Uchiha</span>
+                            <a href="#0" class="testimonials__link" tabindex="-1">@sasukeuchiha</a>
+                        </div>
+                        <p>Excepturi nam cupiditate culpa doloremque 
+deleniti repellat. Veniam quos repellat voluptas animi adipisci.
+                        Nisi eaque consequatur. Quasi voluptas eius 
+distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>                        
+                    </div><div class="testimonials__slide slick-slide slick-cloned" style="width: 580px;" tabindex="-1" role="option" aria-describedby="slick-slide12" data-slick-index="-1" aria-hidden="true">
+                        <img src="Pimp%20my%20container_files/user-03.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Shikamaru Nara</span>
+                            <a href="#0" class="testimonials__link" tabindex="-1">@shikamarunara</a>
+                        </div>
+                        <p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.  
+                        Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.</p>
+                    </div><div class="testimonials__slide slick-slide slick-current slick-active" style="width: 580px;" tabindex="-1" role="option" aria-describedby="slick-slide10" data-slick-index="0" aria-hidden="false">
+                        <img src="Pimp%20my%20container_files/user-01.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Naruto Uzumaki</span>
+                            <a href="#0" class="testimonials__link" tabindex="0">@narutouzumaki</a>
+                        </div>
+                        <p>Qui ipsam temporibus quisquam velMaiores eos 
+cumque distinctio nam accusantium ipsum. 
+                        Laudantium quia consequatur molestias delectus 
+culpa facere hic dolores aperiam. Accusantium praesentium corpori.</p>
+                    </div><div class="testimonials__slide slick-slide slick-active" style="width: 580px;" tabindex="-1" role="option" aria-describedby="slick-slide11" data-slick-index="1" aria-hidden="false">
+                        <img src="Pimp%20my%20container_files/user-02.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Sasuke Uchiha</span>
+                            <a href="#0" class="testimonials__link" tabindex="0">@sasukeuchiha</a>
+                        </div>
+                        <p>Excepturi nam cupiditate culpa doloremque 
+deleniti repellat. Veniam quos repellat voluptas animi adipisci.
+                        Nisi eaque consequatur. Quasi voluptas eius 
+distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>                        
+                    </div><div class="testimonials__slide slick-slide" style="width: 580px;" tabindex="-1" role="option" aria-describedby="slick-slide12" data-slick-index="2" aria-hidden="true">
+                        <img src="Pimp%20my%20container_files/user-03.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Shikamaru Nara</span>
+                            <a href="#0" class="testimonials__link" tabindex="-1">@shikamarunara</a>
+                        </div>
+                        <p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.  
+                        Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.</p>
+                    </div><div class="testimonials__slide slick-slide slick-cloned" style="width: 580px;" tabindex="-1" role="option" aria-describedby="slick-slide10" data-slick-index="3" aria-hidden="true">
+                        <img src="Pimp%20my%20container_files/user-01.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Naruto Uzumaki</span>
+                            <a href="#0" class="testimonials__link" tabindex="-1">@narutouzumaki</a>
+                        </div>
+                        <p>Qui ipsam temporibus quisquam velMaiores eos 
+cumque distinctio nam accusantium ipsum. 
+                        Laudantium quia consequatur molestias delectus 
+culpa facere hic dolores aperiam. Accusantium praesentium corpori.</p>
+                    </div><div class="testimonials__slide slick-slide slick-cloned" style="width: 580px;" tabindex="-1" role="option" aria-describedby="slick-slide11" data-slick-index="4" aria-hidden="true">
+                        <img src="Pimp%20my%20container_files/user-02.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Sasuke Uchiha</span>
+                            <a href="#0" class="testimonials__link" tabindex="-1">@sasukeuchiha</a>
+                        </div>
+                        <p>Excepturi nam cupiditate culpa doloremque 
+deleniti repellat. Veniam quos repellat voluptas animi adipisci.
+                        Nisi eaque consequatur. Quasi voluptas eius 
+distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>                        
+                    </div></div></div><ul class="slick-dots" style="" role="tablist"><li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation10" id="slick-slide10"><button type="button" data-role="none" role="button" tabindex="0">1</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation11" id="slick-slide11"><button type="button" data-role="none" role="button" tabindex="0">2</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation12" id="slick-slide12"><button type="button" data-role="none" role="button" tabindex="0">3</button></li></ul></div> <!-- end testimonials__slider -->
+
+            </div> <!-- end testimonials -->
+
+        </div> <!-- end testimonials-wrap -->
+
+    </section> <!-- end s-features -->
+
+
+    <!-- pricing
+    ================================================== -->
+    <section id="pricing" class="s-pricing target-section">
+
+        <div class="row section-header narrower align-center aos-init" data-aos="fade-up">
+            <div class="col-full">
+                <h1 class="display-1">
+                   Our Easy Pricing Plans For Everyone.
+                </h1>
+                <p class="lead">
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est. 
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat 
+                    omnis ea.
+                </p>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row plans block-1-3 block-m-1-2 block-tab-full stack">
+
+            <div class="col-block item-plan aos-init" data-aos="fade-up">
+                <div class="item-plan__block"> 
+
+                    <div class="item-plan__top-part">
+                        <h3 class="item-plan__title">Basic</h3>
+                        <p class="item-plan__price">Free</p>
+                    </div>
+
+                    <div class="item-plan__bottom-part">
+                        <ul class="item-plan__features disc">
+                            <li><span>5GB</span> Storage</li>
+                            <li><span>10GB</span> Bandwidth</li>
+                            <li><span>5</span> Databases</li>
+                            <li><span>30</span> Email Accounts</li>
+                        </ul>
+
+                        <a class="btn btn--primary large full-width" href="#0">Get Started</a>
+                    </div>  
+                
+                </div>
+            </div> <!-- end item-plan -->
+
+            <div class="col-block item-plan item-plan--popular aos-init" data-aos="fade-up">
+                <div class="item-plan__block"> 
+
+                    <div class="item-plan__top-part">
+                        <h3 class="item-plan__title">Pro Plan</h3>
+                        <p class="item-plan__price">$10</p>
+                        <p class="item-plan__per">Per Month</p>
+                    </div>
+
+                    <div class="item-plan__bottom-part">
+                        <ul class="item-plan__features disc">
+                            <li><span>500GB</span> Storage</li>
+                            <li><span>Unlimited</span> Bandwidth</li>
+                            <li><span>50</span> Databases</li>
+                            <li><span>50</span> Email Accounts</li>
+                        </ul>
+
+                        <a class="btn btn--primary large full-width" href="#0">Get Started</a>
+                    </div>  
+                
+                </div>
+            </div> <!-- end item-plan -->
+
+            <div class="col-block item-plan aos-init" data-aos="fade-up">
+                <div class="item-plan__block"> 
+
+                    <div class="item-plan__top-part">
+                        <h3 class="item-plan__title">Ultimate Plan</h3>
+                        <p class="item-plan__price">$20</p>
+                        <p class="item-plan__per">Per Month</p>
+                    </div>
+
+                    <div class="item-plan__bottom-part">
+                        <ul class="item-plan__features disc">
+                            <li><span>1TB</span> Storage</li>
+                            <li><span>Unlimited</span> Bandwidth</li>
+                            <li><span>100</span> Databases</li>
+                            <li><span>100</span> Email Accounts</li>
+                        </ul>
+
+                        <a class="btn btn--primary large full-width" href="#0">Get Started</a>
+                    </div>  
+                
+                </div>
+            </div> <!-- end item-plan -->
+
+        </div> <!-- end plans -->
+
+    </section> <!-- end s-pricing -->
+
+
+    <!-- download
+    ================================================== -->
+    <section id="download" class="s-download">
+
+        <div class="row download-content">
+            <div class="col-six md-seven download-content__text pull-right aos-init" data-aos="fade-up">
+                <h1 class="display-2">
+                    Download The App Now!
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed 
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <ul class="download-content__badges">
+                    <li><a href="#0" title="" class="badge-appstore">App Store</a></li>
+                    <li><a href="#0" title="" class="badge-googleplay">Play Store</a></li>
+                </ul>
+            </div>
+            <div class="download-content__image aos-init" data-aos="fade-up">
+                <img src="Pimp%20my%20container_files/phone-app-profile-550.png" srcset="images/phone-app-profile-550.png 1x, images/phone-app-profile-1100.png 2x">
+            </div>
+        </div>
+
+    </section> <!-- end s-download -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer footer">
+
+        <div class="row footer__top">
+            <div class="col-six md-full">
+                <h1 class="display-2">
+                    Let's Stay In Touch.
+                </h1>
+                <p class="lead">
+                    Subscribe for updates, special offers and more.
+                </p>
+            </div>
+            <div class="col-six md-full footer__subscribe end">
+                <div class="subscribe-form">
+                    <form id="mc-form" class="group" novalidate="true">
+
+                        <input type="email" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+            
+                        <input type="submit" name="subscribe" value="Sign Up">
+            
+                        <label for="mc-email" class="subscribe-message"></label>
+            
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row footer__bottom">
+            <div class="col-five tab-full">
+                <div class="footer__logo">
+                    <a href="http://127.0.0.1/pimpmycontainer/docs/index.html">
+                        <img src="Pimp%20my%20container_files/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed 
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+
+                <ul class="footer__social">
+                    <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="col-six tab-full end">
+                <ul class="footer__site-links">
+                    <li><a class="smoothscroll" href="#home" title="intro">Intro</a></li>
+                    <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                    <li><a class="smoothscroll" href="#features" title="features">Features</a></li>
+                    <li><a class="smoothscroll" href="#pricing" title="pricing">Pricing</a></li>
+                    <li><a href="http://127.0.0.1/pimpmycontainer/docs/blog.html" title="blog">Blog</a></li>	
+                </ul>
+
+                <p class="footer__contact">
+                    Do you have a question? Send us a word: <br>
+                    <a href="mailto:#0" class="footer__mail-link">support@standout.com</a>
+                </p>
+
+                <div class="cl-copyright">
+                    <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright ©<script>document.write(new Date().getFullYear());</script>2019 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com/" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="Pimp%20my%20container_files/jquery-3.js"></script>
+    <script src="Pimp%20my%20container_files/plugins.js"></script>
+    <script src="Pimp%20my%20container_files/main.js"></script>
+
+</body></html>
